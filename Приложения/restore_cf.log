@@ -1,0 +1,56 @@
+
+Recovery Manager: Release 19.0.0.0.0 - Production on Wed Mar 27 06:09:10 2024
+Version 19.19.0.0.0
+
+Copyright (c) 1982, 2019, Oracle and/or its affiliates.  All rights reserved.
+
+RMAN> #Run:
+2> #/oracle/HRP/19/bin/rman cmdfile 'restore_cf.rcv'|tee restore_cf.log
+3> set DBID=2256538394
+4> #
+5> connect target/
+6> #
+7> startup nomount;
+8> #
+9> run {
+10> ALLOCATE CHANNEL CH00 TYPE 'SBT_TAPE';
+11> SEND 'NB_ORA_SERV=filnbmst6.pi.pvt, NB_ORA_CLIENT=pepldr04029.pi.pvt';
+12> restore controlfile from 'c-2256538394-20240326-07';
+13> # from autobackup;
+14> RELEASE CHANNEL CH00;
+15> }
+16> alter database mount;
+executing command: SET DBID
+
+connected to target database (not started)
+
+Oracle instance started
+
+Total System Global Area   32212253256 bytes
+
+Fixed Size                     8944200 bytes
+Variable Size               3489660928 bytes
+Database Buffers           28655484928 bytes
+Redo Buffers                  58163200 bytes
+
+using target database control file instead of recovery catalog
+allocated channel: CH00
+channel CH00: SID=761 device type=SBT_TAPE
+channel CH00: Veritas NetBackup for Oracle - Release 8.3.0.2 (2021071918)
+
+sent command to channel: CH00
+
+Starting restore at 27-MAR-24
+
+channel CH00: restoring control file
+channel CH00: restore complete, elapsed time: 00:00:15
+output file name=+DATA/HRP/cntrlhrp.dbf
+output file name=+RECO/HRP/cntrlhrp.dbf
+output file name=+ARCH/HRP/cntrlhrp.dbf
+Finished restore at 27-MAR-24
+
+released channel: CH00
+
+Statement processed
+
+Recovery Manager complete.

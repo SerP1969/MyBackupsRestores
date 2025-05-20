@@ -1,0 +1,16 @@
+#Run:
+#/oracle/HRP/19/bin/rman cmdfile 'restore_spf.rcv'|tee restore_sf.log
+set DBID=2256538394
+#
+connect target/
+#
+startup nomount pfile=$ORACLE_HOME/dbs/initHRP.ora.bak;
+#
+run {
+ALLOCATE CHANNEL CH00 TYPE 'SBT_TAPE';
+SEND 'NB_ORA_SERV=filnbmst6.pi.pvt, NB_ORA_CLIENT=pepldr04029.pi.pvt';
+#restore spfile from autobackup;
+restore spfile from 'c-2256538394-20240326-07';
+RELEASE CHANNEL CH00;
+}
+shutdown abort;

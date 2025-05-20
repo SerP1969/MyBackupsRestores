@@ -1,0 +1,16 @@
+#Run:
+#/oracle/HRP/19/bin/rman cmdfile 'restore_cf.rcv'|tee restore_cf.log
+set DBID=2256538394
+#
+connect target/
+#
+startup nomount;
+#
+run {
+ALLOCATE CHANNEL CH00 TYPE 'SBT_TAPE';
+SEND 'NB_ORA_SERV=filnbmst6.pi.pvt, NB_ORA_CLIENT=pepldr04029.pi.pvt';
+restore controlfile from 'c-2256538394-20240326-07';
+# from autobackup;
+RELEASE CHANNEL CH00;
+}
+alter database mount;

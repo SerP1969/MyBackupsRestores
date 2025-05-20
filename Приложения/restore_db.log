@@ -1,0 +1,163 @@
+
+Recovery Manager: Release 19.0.0.0.0 - Production on Wed Mar 27 06:37:02 2024
+Version 19.19.0.0.0
+
+Copyright (c) 1982, 2019, Oracle and/or its affiliates.  All rights reserved.
+
+RMAN> #Run:
+2> #/oracle/HRP/19/bin/rman cmdfile 'restore_db.rcv'|tee restore_db.log
+3> set DBID=2256538394
+4> #
+5> connect target/
+6> #
+7> run {
+8> ALLOCATE CHANNEL CH00 TYPE 'SBT_TAPE';
+9> ALLOCATE CHANNEL CH01 TYPE 'SBT_TAPE';
+10> ALLOCATE CHANNEL CH02 TYPE 'SBT_TAPE';
+11> ALLOCATE CHANNEL CH03 TYPE 'SBT_TAPE';
+12> ALLOCATE CHANNEL CH04 TYPE 'SBT_TAPE';
+13> SEND 'NB_ORA_SERV=filnbmst6.pi.pvt, NB_ORA_CLIENT=pepldr04029.pi.pvt';
+14> set until sequence 254 thread 1;
+15> restore database;
+16> RELEASE CHANNEL CH00;
+17> RELEASE CHANNEL CH01;
+18> RELEASE CHANNEL CH02;
+19> RELEASE CHANNEL CH03;
+20> RELEASE CHANNEL CH04;
+21> }
+22> 
+executing command: SET DBID
+
+connected to target database: HRP (DBID=2256538394, not open)
+
+using target database control file instead of recovery catalog
+allocated channel: CH00
+channel CH00: SID=262 device type=SBT_TAPE
+channel CH00: Veritas NetBackup for Oracle - Release 8.3.0.2 (2021071918)
+
+allocated channel: CH01
+channel CH01: SID=514 device type=SBT_TAPE
+channel CH01: Veritas NetBackup for Oracle - Release 8.3.0.2 (2021071918)
+
+allocated channel: CH02
+channel CH02: SID=763 device type=SBT_TAPE
+channel CH02: Veritas NetBackup for Oracle - Release 8.3.0.2 (2021071918)
+
+allocated channel: CH03
+channel CH03: SID=17 device type=SBT_TAPE
+channel CH03: Veritas NetBackup for Oracle - Release 8.3.0.2 (2021071918)
+
+allocated channel: CH04
+channel CH04: SID=263 device type=SBT_TAPE
+channel CH04: Veritas NetBackup for Oracle - Release 8.3.0.2 (2021071918)
+
+sent command to channel: CH00
+sent command to channel: CH01
+sent command to channel: CH02
+sent command to channel: CH03
+sent command to channel: CH04
+
+executing command: SET until clause
+
+Starting restore at 27-MAR-24
+
+channel CH00: starting datafile backup set restore
+channel CH00: specifying datafile(s) to restore from backup set
+channel CH00: restoring datafile 00005 to +DATA/HRP/DATAFILE/psapsr3.293.1164329003
+channel CH00: restoring datafile 00010 to +DATA/HRP/DATAFILE/psapsr3.309.1164324665
+channel CH00: restoring datafile 00015 to +DATA/HRP/DATAFILE/psapsr3.328.1164325251
+channel CH00: restoring datafile 00016 to +DATA/HRP/DATAFILE/psapsr3.327.1164325377
+channel CH00: restoring datafile 00020 to +DATA/HRP/DATAFILE/psapsr3.345.1164326499
+channel CH00: restoring datafile 00024 to +DATA/HRP/DATAFILE/psapsr3usr.319.1164326755
+channel CH00: restoring datafile 00027 to +DATA/HRP/DATAFILE/psapsr3.316.1164326891
+channel CH00: restoring datafile 00032 to +DATA/HRP/DATAFILE/psapsr3.311.1164327347
+channel CH00: restoring datafile 00033 to +DATA/HRP/DATAFILE/system.343.1164324303
+channel CH00: restoring datafile 00039 to +DATA/HRP/DATAFILE/psapsr3.304.1164328169
+channel CH00: restoring datafile 00044 to +DATA/HRP/DATAFILE/psapsr3.299.1164328633
+channel CH00: restoring datafile 00055 to +DATA/HRP/DATAFILE/psapsr3.288.1164329459
+channel CH00: restoring datafile 00059 to +DATA/HRP/DATAFILE/psapsr3.284.1164331423
+channel CH00: restoring datafile 00063 to +DATA/HRP/DATAFILE/psapsr3.280.1164331765
+channel CH00: restoring datafile 00073 to +DATA/HRP/DATAFILE/psapsr3.271.1164333293
+channel CH00: restoring datafile 00078 to +DATA/HRP/DATAFILE/psapsr3.260.1164334777
+channel CH00: restoring datafile 00085 to +DATA/HRP/DATAFILE/psapsr3.333.1164336737
+channel CH00: reading from backup piece bk_dHRP_uk22mej88_s2690_p1_t1164397832
+channel CH01: starting datafile backup set restore
+channel CH01: specifying datafile(s) to restore from backup set
+channel CH01: restoring datafile 00004 to +DATA/HRP/DATAFILE/psapsr3.303.1164328229
+channel CH01: restoring datafile 00006 to +DATA/HRP/DATAFILE/psapsr3.282.1164331479
+channel CH01: restoring datafile 00011 to +DATA/HRP/DATAFILE/psapsr3.332.1164324795
+channel CH01: restoring datafile 00019 to +DATA/HRP/DATAFILE/psapsr3.324.1164326063
+channel CH01: restoring datafile 00023 to +DATA/HRP/DATAFILE/psapundo.320.1164326735
+channel CH01: restoring datafile 00026 to +DATA/HRP/DATAFILE/psapsr3.317.1164326823
+channel CH01: restoring datafile 00031 to +DATA/HRP/DATAFILE/psapsr3.312.1164327271
+channel CH01: restoring datafile 00038 to +DATA/HRP/DATAFILE/psapsr3.305.1164327811
+channel CH01: restoring datafile 00043 to +DATA/HRP/DATAFILE/psapsr3.300.1164328551
+channel CH01: restoring datafile 00050 to +DATA/HRP/DATAFILE/psapsr3.337.1164329107
+channel CH01: restoring datafile 00051 to +DATA/HRP/DATAFILE/psapsr3.292.1164329183
+channel CH01: restoring datafile 00060 to +DATA/HRP/DATAFILE/psapsr3.336.1164331585
+channel CH01: restoring datafile 00064 to +DATA/HRP/DATAFILE/psapsr3.279.1164331827
+channel CH01: restoring datafile 00068 to +DATA/HRP/DATAFILE/psapsr3.275.1164332347
+channel CH01: restoring datafile 00072 to +DATA/HRP/DATAFILE/psapsr3.268.1164333071
+channel CH01: restoring datafile 00077 to +DATA/HRP/DATAFILE/psapsr3.259.1164334529
+channel CH01: restoring datafile 00082 to +DATA/HRP/DATAFILE/psapsr3.269.1164335895
+channel CH01: reading from backup piece bk_dHRP_uk42mej88_s2692_p1_t1164397832
+channel CH02: starting datafile backup set restore
+channel CH02: specifying datafile(s) to restore from backup set
+channel CH02: restoring datafile 00007 to +DATA/HRP/DATAFILE/psapsr3.267.1164332621
+channel CH02: restoring datafile 00012 to +DATA/HRP/DATAFILE/psapsr3.331.1164324895
+channel CH02: restoring datafile 00021 to +DATA/HRP/DATAFILE/psapsr3.322.1164326591
+channel CH02: restoring datafile 00028 to +DATA/HRP/DATAFILE/psapsr3.315.1164326957
+channel CH02: restoring datafile 00034 to +DATA/HRP/DATAFILE/psapsr3.310.1164327419
+channel CH02: restoring datafile 00035 to +DATA/HRP/DATAFILE/psapsr3.308.1164327505
+channel CH02: restoring datafile 00040 to +DATA/HRP/DATAFILE/psapsr3.338.1164328331
+channel CH02: restoring datafile 00045 to +DATA/HRP/DATAFILE/psapsr3.298.1164328695
+channel CH02: restoring datafile 00047 to +DATA/HRP/DATAFILE/psapsr3usr.296.1164328837
+channel CH02: restoring datafile 00048 to +DATA/HRP/DATAFILE/sysaux.295.1164328875
+channel CH02: restoring datafile 00052 to +DATA/HRP/DATAFILE/psapsr3.291.1164329257
+channel CH02: restoring datafile 00054 to +DATA/HRP/DATAFILE/psapsr3.289.1164329405
+channel CH02: restoring datafile 00058 to +DATA/HRP/DATAFILE/psapsr3.285.1164331357
+channel CH02: restoring datafile 00067 to +DATA/HRP/DATAFILE/psapsr3.276.1164332195
+channel CH02: restoring datafile 00071 to +DATA/HRP/DATAFILE/psapsr3.266.1164332863
+channel CH02: restoring datafile 00076 to +DATA/HRP/DATAFILE/psapsr3.258.1164334257
+channel CH02: restoring datafile 00081 to +DATA/HRP/DATAFILE/psapsr3.262.1164335629
+channel CH02: reading from backup piece bk_dHRP_uk32mej88_s2691_p1_t1164397832
+channel CH03: starting datafile backup set restore
+channel CH03: specifying datafile(s) to restore from backup set
+channel CH03: restoring datafile 00002 to +DATA/HRP/DATAFILE/psapundo.323.1164326371
+channel CH03: restoring datafile 00003 to +DATA/HRP/DATAFILE/sysaux.313.1164327127
+channel CH03: restoring datafile 00009 to +DATA/HRP/DATAFILE/psapsr3.257.1164336249
+channel CH03: restoring datafile 00014 to +DATA/HRP/DATAFILE/psapsr3.329.1164325123
+channel CH03: restoring datafile 00018 to +DATA/HRP/DATAFILE/psapsr3.325.1164325841
+channel CH03: restoring datafile 00022 to +DATA/HRP/DATAFILE/psapsr3.321.1164326659
+channel CH03: restoring datafile 00029 to +DATA/HRP/DATAFILE/psapsr3.314.1164327061
+channel CH03: restoring datafile 00036 to +DATA/HRP/DATAFILE/psapsr3.307.1164327663
+channel CH03: restoring datafile 00041 to +DATA/HRP/DATAFILE/psapsr3.302.1164328405
+channel CH03: restoring datafile 00046 to +DATA/HRP/DATAFILE/psapsr3.297.1164328767
+channel CH03: restoring datafile 00056 to +DATA/HRP/DATAFILE/psapsr3.287.1164329519
+channel CH03: restoring datafile 00057 to +DATA/HRP/DATAFILE/psapsr3.286.1164331299
+channel CH03: restoring datafile 00066 to +DATA/HRP/DATAFILE/psapsr3.277.1164332053
+channel CH03: restoring datafile 00070 to +DATA/HRP/DATAFILE/psapsr3.335.1164332719
+channel CH03: restoring datafile 00075 to +DATA/HRP/DATAFILE/psapsr3.272.1164334011
+channel CH03: restoring datafile 00080 to +DATA/HRP/DATAFILE/psapsr3.334.1164335397
+channel CH03: restoring datafile 00084 to +DATA/HRP/DATAFILE/psapsr3.391.1164336189
+channel CH03: reading from backup piece bk_dHRP_uk02mej88_s2688_p1_t1164397832
+channel CH04: starting datafile backup set restore
+channel CH04: specifying datafile(s) to restore from backup set
+channel CH04: restoring datafile 00001 to +DATA/HRP/DATAFILE/system.461.1164324267
+channel CH04: restoring datafile 00008 to +DATA/HRP/DATAFILE/psapsr3.486.1164335283
+channel CH04: restoring datafile 00013 to +DATA/HRP/DATAFILE/psapsr3.330.1164325013
+channel CH04: restoring datafile 00017 to +DATA/HRP/DATAFILE/psapsr3.326.1164325631
+channel CH04: restoring datafile 00025 to +DATA/HRP/DATAFILE/psapsr3.318.1164326757
+channel CH04: restoring datafile 00030 to +DATA/HRP/DATAFILE/psapsr3.340.1164327197
+channel CH04: restoring datafile 00037 to +DATA/HRP/DATAFILE/psapsr3.306.1164327737
+channel CH04: restoring datafile 00042 to +DATA/HRP/DATAFILE/psapsr3.301.1164328477
+channel CH04: restoring datafile 00049 to +DATA/HRP/DATAFILE/psapsr3.294.1164328931
+channel CH04: restoring datafile 00053 to +DATA/HRP/DATAFILE/psapsr3.290.1164329341
+channel CH04: restoring datafile 00061 to +DATA/HRP/DATAFILE/psapsr3.283.1164331637
+channel CH04: restoring datafile 00062 to +DATA/HRP/DATAFILE/psapsr3.281.1164331691
+channel CH04: restoring datafile 00065 to +DATA/HRP/DATAFILE/psapsr3.278.1164331905
+channel CH04: restoring datafile 00069 to +DATA/HRP/DATAFILE/psapsr3.274.1164332479
+channel CH04: restoring datafile 00074 to +DATA/HRP/DATAFILE/psapsr3.273.1164333757
+channel CH04: restoring datafile 00079 to +DATA/HRP/DATAFILE/psapsr3.261.1164335049
+channel CH04: restoring datafile 00083 to +DATA/HRP/DATAFILE/psapsr3.265.1164336137
+channel CH04: reading from backup piece bk_dHRP_uk12mej88_s2689_p1_t1164397832

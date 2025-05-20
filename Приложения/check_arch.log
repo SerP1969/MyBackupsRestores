@@ -1,0 +1,1143 @@
+
+Recovery Manager: Release 19.0.0.0.0 - Production on Thu Mar 28 09:05:03 2024
+Version 19.19.0.0.0
+
+Copyright (c) 1982, 2019, Oracle and/or its affiliates.  All rights reserved.
+
+RMAN> #Run:
+2> #/oracle/HRP/19/bin/rman cmdfile 'check_arch.rcv'|tee check_arch.log
+3> set DBID=2256538394
+4> connect target/
+5> ALLOCATE CHANNEL for maintenance type 'SBT_TAPE';
+6> SEND 'NB_ORA_SERV=filnbmst6.pi.pvt, NB_ORA_CLIENT=pepldr04029.pi.pvt';
+7> LIST BACKUP BY FILE;
+8> 
+executing command: SET DBID
+
+connected to target database: HRP (DBID=2256538394, not open)
+
+using target database control file instead of recovery catalog
+allocated channel: ORA_MAINT_SBT_TAPE_1
+channel ORA_MAINT_SBT_TAPE_1: SID=261 device type=SBT_TAPE
+channel ORA_MAINT_SBT_TAPE_1: Veritas NetBackup for Oracle - Release 8.3.0.2 (2021071918)
+
+sent command to channel: ORA_MAINT_SBT_TAPE_1
+
+
+List of Datafile Backups
+========================
+
+File Key     TY LV S Ckp SCN    Ckp Time  #Pieces #Copies Compressed Tag
+---- ------- -  -- - ---------- --------- ------- ------- ---------- ---
+1    138     B  1  A 14459700980678 25-MAR-24 1       1       NO         HRP-19-PEPLDR04029
+     113     B  1  A 14459700703204 25-MAR-24 1       1       NO         HRP-19-PEPLDR04029
+     62      B  0  A 14459698947523 23-MAR-24 1       1       NO         HRP-19-PEPLDR04029
+     49      B  0  X 14376167190989 23-SEP-22 1       1       YES        TAG20220923T163949
+     35      B  F  X 13928649914362 04-DEC-18 1       1       YES        FORSTANDBY
+2    139     B  1  A 14459700980675 25-MAR-24 1       1       NO         HRP-19-PEPLDR04029
+     116     B  1  A 14459700703201 25-MAR-24 1       1       NO         HRP-19-PEPLDR04029
+     61      B  0  A 14459698947520 23-MAR-24 1       1       NO         HRP-19-PEPLDR04029
+     46      B  0  X 14376167190991 23-SEP-22 1       1       YES        TAG20220923T163949
+     40      B  F  X 13928649914363 04-DEC-18 1       1       YES        FORSTANDBY
+3    139     B  1  A 14459700980675 25-MAR-24 1       1       NO         HRP-19-PEPLDR04029
+     116     B  1  A 14459700703201 25-MAR-24 1       1       NO         HRP-19-PEPLDR04029
+     61      B  0  A 14459698947520 23-MAR-24 1       1       NO         HRP-19-PEPLDR04029
+     50      B  0  X 14376167190984 23-SEP-22 1       1       YES        TAG20220923T163949
+     39      B  F  X 13928649914360 04-DEC-18 1       1       YES        FORSTANDBY
+4    137     B  1  A 14459700980692 25-MAR-24 1       1       NO         HRP-19-PEPLDR04029
+     114     B  1  A 14459700703210 25-MAR-24 1       1       NO         HRP-19-PEPLDR04029
+     59      B  0  A 14459698947533 23-MAR-24 1       1       NO         HRP-19-PEPLDR04029
+     46      B  0  X 14376167190991 23-SEP-22 1       1       YES        TAG20220923T163949
+     39      B  F  X 13928649914360 04-DEC-18 1       1       YES        FORSTANDBY
+5    136     B  1  A 14459700980688 25-MAR-24 1       1       NO         HRP-19-PEPLDR04029
+     112     B  1  A 14459700703206 25-MAR-24 1       1       NO         HRP-19-PEPLDR04029
+     58      B  0  A 14459698947527 23-MAR-24 1       1       NO         HRP-19-PEPLDR04029
+     50      B  0  X 14376167190984 23-SEP-22 1       1       YES        TAG20220923T163949
+     39      B  F  X 13928649914360 04-DEC-18 1       1       YES        FORSTANDBY
+6    137     B  1  A 14459700980692 25-MAR-24 1       1       NO         HRP-19-PEPLDR04029
+     114     B  1  A 14459700703210 25-MAR-24 1       1       NO         HRP-19-PEPLDR04029
+     59      B  0  A 14459698947533 23-MAR-24 1       1       NO         HRP-19-PEPLDR04029
+     49      B  0  X 14376167190989 23-SEP-22 1       1       YES        TAG20220923T163949
+     40      B  F  X 13928649914363 04-DEC-18 1       1       YES        FORSTANDBY
+7    135     B  1  A 14459700980690 25-MAR-24 1       1       NO         HRP-19-PEPLDR04029
+     115     B  1  A 14459700703209 25-MAR-24 1       1       NO         HRP-19-PEPLDR04029
+     60      B  0  A 14459698947530 23-MAR-24 1       1       NO         HRP-19-PEPLDR04029
+     46      B  0  X 14376167190991 23-SEP-22 1       1       YES        TAG20220923T163949
+     38      B  F  X 13928649914361 04-DEC-18 1       1       YES        FORSTANDBY
+8    138     B  1  A 14459700980678 25-MAR-24 1       1       NO         HRP-19-PEPLDR04029
+     113     B  1  A 14459700703204 25-MAR-24 1       1       NO         HRP-19-PEPLDR04029
+     62      B  0  A 14459698947523 23-MAR-24 1       1       NO         HRP-19-PEPLDR04029
+     51      B  0  X 14376167190986 23-SEP-22 1       1       YES        TAG20220923T163949
+     35      B  F  X 13928649914362 04-DEC-18 1       1       YES        FORSTANDBY
+9    139     B  1  A 14459700980675 25-MAR-24 1       1       NO         HRP-19-PEPLDR04029
+     116     B  1  A 14459700703201 25-MAR-24 1       1       NO         HRP-19-PEPLDR04029
+     61      B  0  A 14459698947520 23-MAR-24 1       1       NO         HRP-19-PEPLDR04029
+     50      B  0  X 14376167190984 23-SEP-22 1       1       YES        TAG20220923T163949
+     39      B  F  X 13928649914360 04-DEC-18 1       1       YES        FORSTANDBY
+10   136     B  1  A 14459700980688 25-MAR-24 1       1       NO         HRP-19-PEPLDR04029
+     112     B  1  A 14459700703206 25-MAR-24 1       1       NO         HRP-19-PEPLDR04029
+     58      B  0  A 14459698947527 23-MAR-24 1       1       NO         HRP-19-PEPLDR04029
+     49      B  0  X 14376167190989 23-SEP-22 1       1       YES        TAG20220923T163949
+     40      B  F  X 13928649914363 04-DEC-18 1       1       YES        FORSTANDBY
+11   137     B  1  A 14459700980692 25-MAR-24 1       1       NO         HRP-19-PEPLDR04029
+     114     B  1  A 14459700703210 25-MAR-24 1       1       NO         HRP-19-PEPLDR04029
+     59      B  0  A 14459698947533 23-MAR-24 1       1       NO         HRP-19-PEPLDR04029
+     46      B  0  X 14376167190991 23-SEP-22 1       1       YES        TAG20220923T163949
+     38      B  F  X 13928649914361 04-DEC-18 1       1       YES        FORSTANDBY
+12   135     B  1  A 14459700980690 25-MAR-24 1       1       NO         HRP-19-PEPLDR04029
+     115     B  1  A 14459700703209 25-MAR-24 1       1       NO         HRP-19-PEPLDR04029
+     60      B  0  A 14459698947530 23-MAR-24 1       1       NO         HRP-19-PEPLDR04029
+     51      B  0  X 14376167190986 23-SEP-22 1       1       YES        TAG20220923T163949
+     35      B  F  X 13928649914362 04-DEC-18 1       1       YES        FORSTANDBY
+13   138     B  1  A 14459700980678 25-MAR-24 1       1       NO         HRP-19-PEPLDR04029
+     113     B  1  A 14459700703204 25-MAR-24 1       1       NO         HRP-19-PEPLDR04029
+     62      B  0  A 14459698947523 23-MAR-24 1       1       NO         HRP-19-PEPLDR04029
+     50      B  0  X 14376167190984 23-SEP-22 1       1       YES        TAG20220923T163949
+     39      B  F  X 13928649914360 04-DEC-18 1       1       YES        FORSTANDBY
+14   139     B  1  A 14459700980675 25-MAR-24 1       1       NO         HRP-19-PEPLDR04029
+     116     B  1  A 14459700703201 25-MAR-24 1       1       NO         HRP-19-PEPLDR04029
+     61      B  0  A 14459698947520 23-MAR-24 1       1       NO         HRP-19-PEPLDR04029
+     49      B  0  X 14376167190989 23-SEP-22 1       1       YES        TAG20220923T163949
+     40      B  F  X 13928649914363 04-DEC-18 1       1       YES        FORSTANDBY
+15   136     B  1  A 14459700980688 25-MAR-24 1       1       NO         HRP-19-PEPLDR04029
+     112     B  1  A 14459700703206 25-MAR-24 1       1       NO         HRP-19-PEPLDR04029
+     58      B  0  A 14459698947527 23-MAR-24 1       1       NO         HRP-19-PEPLDR04029
+     46      B  0  X 14376167190991 23-SEP-22 1       1       YES        TAG20220923T163949
+     38      B  F  X 13928649914361 04-DEC-18 1       1       YES        FORSTANDBY
+16   136     B  1  A 14459700980688 25-MAR-24 1       1       NO         HRP-19-PEPLDR04029
+     112     B  1  A 14459700703206 25-MAR-24 1       1       NO         HRP-19-PEPLDR04029
+     58      B  0  A 14459698947527 23-MAR-24 1       1       NO         HRP-19-PEPLDR04029
+     50      B  0  X 14376167190984 23-SEP-22 1       1       YES        TAG20220923T163949
+     38      B  F  X 13928649914361 04-DEC-18 1       1       YES        FORSTANDBY
+17   138     B  1  A 14459700980678 25-MAR-24 1       1       NO         HRP-19-PEPLDR04029
+     113     B  1  A 14459700703204 25-MAR-24 1       1       NO         HRP-19-PEPLDR04029
+     62      B  0  A 14459698947523 23-MAR-24 1       1       NO         HRP-19-PEPLDR04029
+     49      B  0  X 14376167190989 23-SEP-22 1       1       YES        TAG20220923T163949
+     39      B  F  X 13928649914360 04-DEC-18 1       1       YES        FORSTANDBY
+18   139     B  1  A 14459700980675 25-MAR-24 1       1       NO         HRP-19-PEPLDR04029
+     116     B  1  A 14459700703201 25-MAR-24 1       1       NO         HRP-19-PEPLDR04029
+     61      B  0  A 14459698947520 23-MAR-24 1       1       NO         HRP-19-PEPLDR04029
+     51      B  0  X 14376167190986 23-SEP-22 1       1       YES        TAG20220923T163949
+     35      B  F  X 13928649914362 04-DEC-18 1       1       YES        FORSTANDBY
+19   137     B  1  A 14459700980692 25-MAR-24 1       1       NO         HRP-19-PEPLDR04029
+     114     B  1  A 14459700703210 25-MAR-24 1       1       NO         HRP-19-PEPLDR04029
+     59      B  0  A 14459698947533 23-MAR-24 1       1       NO         HRP-19-PEPLDR04029
+     51      B  0  X 14376167190986 23-SEP-22 1       1       YES        TAG20220923T163949
+     40      B  F  X 13928649914363 04-DEC-18 1       1       YES        FORSTANDBY
+20   136     B  1  A 14459700980688 25-MAR-24 1       1       NO         HRP-19-PEPLDR04029
+     112     B  1  A 14459700703206 25-MAR-24 1       1       NO         HRP-19-PEPLDR04029
+     58      B  0  A 14459698947527 23-MAR-24 1       1       NO         HRP-19-PEPLDR04029
+     50      B  0  X 14376167190984 23-SEP-22 1       1       YES        TAG20220923T163949
+     38      B  F  X 13928649914361 04-DEC-18 1       1       YES        FORSTANDBY
+21   135     B  1  A 14459700980690 25-MAR-24 1       1       NO         HRP-19-PEPLDR04029
+     115     B  1  A 14459700703209 25-MAR-24 1       1       NO         HRP-19-PEPLDR04029
+     60      B  0  A 14459698947530 23-MAR-24 1       1       NO         HRP-19-PEPLDR04029
+     49      B  0  X 14376167190989 23-SEP-22 1       1       YES        TAG20220923T163949
+     39      B  F  X 13928649914360 04-DEC-18 1       1       YES        FORSTANDBY
+22   139     B  1  A 14459700980675 25-MAR-24 1       1       NO         HRP-19-PEPLDR04029
+     116     B  1  A 14459700703201 25-MAR-24 1       1       NO         HRP-19-PEPLDR04029
+     61      B  0  A 14459698947520 23-MAR-24 1       1       NO         HRP-19-PEPLDR04029
+     46      B  0  X 14376167190991 23-SEP-22 1       1       YES        TAG20220923T163949
+     35      B  F  X 13928649914362 04-DEC-18 1       1       YES        FORSTANDBY
+23   137     B  1  A 14459700980692 25-MAR-24 1       1       NO         HRP-19-PEPLDR04029
+     114     B  1  A 14459700703210 25-MAR-24 1       1       NO         HRP-19-PEPLDR04029
+     59      B  0  A 14459698947533 23-MAR-24 1       1       NO         HRP-19-PEPLDR04029
+     51      B  0  X 14376167190986 23-SEP-22 1       1       YES        TAG20220923T163949
+     35      B  F  X 13928649914362 04-DEC-18 1       1       YES        FORSTANDBY
+24   136     B  1  A 14459700980688 25-MAR-24 1       1       NO         HRP-19-PEPLDR04029
+     112     B  1  A 14459700703206 25-MAR-24 1       1       NO         HRP-19-PEPLDR04029
+     58      B  0  A 14459698947527 23-MAR-24 1       1       NO         HRP-19-PEPLDR04029
+     46      B  0  X 14376167190991 23-SEP-22 1       1       YES        TAG20220923T163949
+     40      B  F  X 13928649914363 04-DEC-18 1       1       YES        FORSTANDBY
+25   138     B  1  A 14459700980678 25-MAR-24 1       1       NO         HRP-19-PEPLDR04029
+     113     B  1  A 14459700703204 25-MAR-24 1       1       NO         HRP-19-PEPLDR04029
+     62      B  0  A 14459698947523 23-MAR-24 1       1       NO         HRP-19-PEPLDR04029
+     51      B  0  X 14376167190986 23-SEP-22 1       1       YES        TAG20220923T163949
+     40      B  F  X 13928649914363 04-DEC-18 1       1       YES        FORSTANDBY
+26   137     B  1  A 14459700980692 25-MAR-24 1       1       NO         HRP-19-PEPLDR04029
+     114     B  1  A 14459700703210 25-MAR-24 1       1       NO         HRP-19-PEPLDR04029
+     59      B  0  A 14459698947533 23-MAR-24 1       1       NO         HRP-19-PEPLDR04029
+     50      B  0  X 14376167190984 23-SEP-22 1       1       YES        TAG20220923T163949
+     38      B  F  X 13928649914361 04-DEC-18 1       1       YES        FORSTANDBY
+27   136     B  1  A 14459700980688 25-MAR-24 1       1       NO         HRP-19-PEPLDR04029
+     112     B  1  A 14459700703206 25-MAR-24 1       1       NO         HRP-19-PEPLDR04029
+     58      B  0  A 14459698947527 23-MAR-24 1       1       NO         HRP-19-PEPLDR04029
+     49      B  0  X 14376167190989 23-SEP-22 1       1       YES        TAG20220923T163949
+     39      B  F  X 13928649914360 04-DEC-18 1       1       YES        FORSTANDBY
+28   135     B  1  A 14459700980690 25-MAR-24 1       1       NO         HRP-19-PEPLDR04029
+     115     B  1  A 14459700703209 25-MAR-24 1       1       NO         HRP-19-PEPLDR04029
+     60      B  0  A 14459698947530 23-MAR-24 1       1       NO         HRP-19-PEPLDR04029
+     46      B  0  X 14376167190991 23-SEP-22 1       1       YES        TAG20220923T163949
+     35      B  F  X 13928649914362 04-DEC-18 1       1       YES        FORSTANDBY
+29   139     B  1  A 14459700980675 25-MAR-24 1       1       NO         HRP-19-PEPLDR04029
+     116     B  1  A 14459700703201 25-MAR-24 1       1       NO         HRP-19-PEPLDR04029
+     61      B  0  A 14459698947520 23-MAR-24 1       1       NO         HRP-19-PEPLDR04029
+     51      B  0  X 14376167190986 23-SEP-22 1       1       YES        TAG20220923T163949
+     40      B  F  X 13928649914363 04-DEC-18 1       1       YES        FORSTANDBY
+30   138     B  1  A 14459700980678 25-MAR-24 1       1       NO         HRP-19-PEPLDR04029
+     113     B  1  A 14459700703204 25-MAR-24 1       1       NO         HRP-19-PEPLDR04029
+     62      B  0  A 14459698947523 23-MAR-24 1       1       NO         HRP-19-PEPLDR04029
+     50      B  0  X 14376167190984 23-SEP-22 1       1       YES        TAG20220923T163949
+     38      B  F  X 13928649914361 04-DEC-18 1       1       YES        FORSTANDBY
+31   137     B  1  A 14459700980692 25-MAR-24 1       1       NO         HRP-19-PEPLDR04029
+     114     B  1  A 14459700703210 25-MAR-24 1       1       NO         HRP-19-PEPLDR04029
+     59      B  0  A 14459698947533 23-MAR-24 1       1       NO         HRP-19-PEPLDR04029
+     49      B  0  X 14376167190989 23-SEP-22 1       1       YES        TAG20220923T163949
+     39      B  F  X 13928649914360 04-DEC-18 1       1       YES        FORSTANDBY
+32   136     B  1  A 14459700980688 25-MAR-24 1       1       NO         HRP-19-PEPLDR04029
+     112     B  1  A 14459700703206 25-MAR-24 1       1       NO         HRP-19-PEPLDR04029
+     58      B  0  A 14459698947527 23-MAR-24 1       1       NO         HRP-19-PEPLDR04029
+     46      B  0  X 14376167190991 23-SEP-22 1       1       YES        TAG20220923T163949
+     35      B  F  X 13928649914362 04-DEC-18 1       1       YES        FORSTANDBY
+33   136     B  1  A 14459700980688 25-MAR-24 1       1       NO         HRP-19-PEPLDR04029
+     112     B  1  A 14459700703206 25-MAR-24 1       1       NO         HRP-19-PEPLDR04029
+     58      B  0  A 14459698947527 23-MAR-24 1       1       NO         HRP-19-PEPLDR04029
+     49      B  0  X 14376167190989 23-SEP-22 1       1       YES        TAG20220923T163949
+     39      B  F  X 13928649914360 04-DEC-18 1       1       YES        FORSTANDBY
+34   135     B  1  A 14459700980690 25-MAR-24 1       1       NO         HRP-19-PEPLDR04029
+     115     B  1  A 14459700703209 25-MAR-24 1       1       NO         HRP-19-PEPLDR04029
+     60      B  0  A 14459698947530 23-MAR-24 1       1       NO         HRP-19-PEPLDR04029
+     51      B  0  X 14376167190986 23-SEP-22 1       1       YES        TAG20220923T163949
+     40      B  F  X 13928649914363 04-DEC-18 1       1       YES        FORSTANDBY
+35   135     B  1  A 14459700980690 25-MAR-24 1       1       NO         HRP-19-PEPLDR04029
+     115     B  1  A 14459700703209 25-MAR-24 1       1       NO         HRP-19-PEPLDR04029
+     60      B  0  A 14459698947530 23-MAR-24 1       1       NO         HRP-19-PEPLDR04029
+     51      B  0  X 14376167190986 23-SEP-22 1       1       YES        TAG20220923T163949
+     40      B  F  X 13928649914363 04-DEC-18 1       1       YES        FORSTANDBY
+36   139     B  1  A 14459700980675 25-MAR-24 1       1       NO         HRP-19-PEPLDR04029
+     116     B  1  A 14459700703201 25-MAR-24 1       1       NO         HRP-19-PEPLDR04029
+     61      B  0  A 14459698947520 23-MAR-24 1       1       NO         HRP-19-PEPLDR04029
+     50      B  0  X 14376167190984 23-SEP-22 1       1       YES        TAG20220923T163949
+     38      B  F  X 13928649914361 04-DEC-18 1       1       YES        FORSTANDBY
+37   138     B  1  A 14459700980678 25-MAR-24 1       1       NO         HRP-19-PEPLDR04029
+     113     B  1  A 14459700703204 25-MAR-24 1       1       NO         HRP-19-PEPLDR04029
+     62      B  0  A 14459698947523 23-MAR-24 1       1       NO         HRP-19-PEPLDR04029
+     49      B  0  X 14376167190989 23-SEP-22 1       1       YES        TAG20220923T163949
+     39      B  F  X 13928649914360 04-DEC-18 1       1       YES        FORSTANDBY
+38   137     B  1  A 14459700980692 25-MAR-24 1       1       NO         HRP-19-PEPLDR04029
+     114     B  1  A 14459700703210 25-MAR-24 1       1       NO         HRP-19-PEPLDR04029
+     59      B  0  A 14459698947533 23-MAR-24 1       1       NO         HRP-19-PEPLDR04029
+     46      B  0  X 14376167190991 23-SEP-22 1       1       YES        TAG20220923T163949
+     35      B  F  X 13928649914362 04-DEC-18 1       1       YES        FORSTANDBY
+39   136     B  1  A 14459700980688 25-MAR-24 1       1       NO         HRP-19-PEPLDR04029
+     112     B  1  A 14459700703206 25-MAR-24 1       1       NO         HRP-19-PEPLDR04029
+     58      B  0  A 14459698947527 23-MAR-24 1       1       NO         HRP-19-PEPLDR04029
+     51      B  0  X 14376167190986 23-SEP-22 1       1       YES        TAG20220923T163949
+     40      B  F  X 13928649914363 04-DEC-18 1       1       YES        FORSTANDBY
+40   135     B  1  A 14459700980690 25-MAR-24 1       1       NO         HRP-19-PEPLDR04029
+     115     B  1  A 14459700703209 25-MAR-24 1       1       NO         HRP-19-PEPLDR04029
+     60      B  0  A 14459698947530 23-MAR-24 1       1       NO         HRP-19-PEPLDR04029
+     50      B  0  X 14376167190984 23-SEP-22 1       1       YES        TAG20220923T163949
+     38      B  F  X 13928649914361 04-DEC-18 1       1       YES        FORSTANDBY
+41   139     B  1  A 14459700980675 25-MAR-24 1       1       NO         HRP-19-PEPLDR04029
+     116     B  1  A 14459700703201 25-MAR-24 1       1       NO         HRP-19-PEPLDR04029
+     61      B  0  A 14459698947520 23-MAR-24 1       1       NO         HRP-19-PEPLDR04029
+     49      B  0  X 14376167190989 23-SEP-22 1       1       YES        TAG20220923T163949
+     39      B  F  X 13928649914360 04-DEC-18 1       1       YES        FORSTANDBY
+42   138     B  1  A 14459700980678 25-MAR-24 1       1       NO         HRP-19-PEPLDR04029
+     113     B  1  A 14459700703204 25-MAR-24 1       1       NO         HRP-19-PEPLDR04029
+     62      B  0  A 14459698947523 23-MAR-24 1       1       NO         HRP-19-PEPLDR04029
+     46      B  0  X 14376167190991 23-SEP-22 1       1       YES        TAG20220923T163949
+     35      B  F  X 13928649914362 04-DEC-18 1       1       YES        FORSTANDBY
+43   137     B  1  A 14459700980692 25-MAR-24 1       1       NO         HRP-19-PEPLDR04029
+     114     B  1  A 14459700703210 25-MAR-24 1       1       NO         HRP-19-PEPLDR04029
+     59      B  0  A 14459698947533 23-MAR-24 1       1       NO         HRP-19-PEPLDR04029
+     51      B  0  X 14376167190986 23-SEP-22 1       1       YES        TAG20220923T163949
+     40      B  F  X 13928649914363 04-DEC-18 1       1       YES        FORSTANDBY
+44   136     B  1  A 14459700980688 25-MAR-24 1       1       NO         HRP-19-PEPLDR04029
+     112     B  1  A 14459700703206 25-MAR-24 1       1       NO         HRP-19-PEPLDR04029
+     58      B  0  A 14459698947527 23-MAR-24 1       1       NO         HRP-19-PEPLDR04029
+     50      B  0  X 14376167190984 23-SEP-22 1       1       YES        TAG20220923T163949
+     38      B  F  X 13928649914361 04-DEC-18 1       1       YES        FORSTANDBY
+45   135     B  1  A 14459700980690 25-MAR-24 1       1       NO         HRP-19-PEPLDR04029
+     115     B  1  A 14459700703209 25-MAR-24 1       1       NO         HRP-19-PEPLDR04029
+     60      B  0  A 14459698947530 23-MAR-24 1       1       NO         HRP-19-PEPLDR04029
+     49      B  0  X 14376167190989 23-SEP-22 1       1       YES        TAG20220923T163949
+     39      B  F  X 13928649914360 04-DEC-18 1       1       YES        FORSTANDBY
+46   139     B  1  A 14459700980675 25-MAR-24 1       1       NO         HRP-19-PEPLDR04029
+     116     B  1  A 14459700703201 25-MAR-24 1       1       NO         HRP-19-PEPLDR04029
+     61      B  0  A 14459698947520 23-MAR-24 1       1       NO         HRP-19-PEPLDR04029
+     46      B  0  X 14376167190991 23-SEP-22 1       1       YES        TAG20220923T163949
+     35      B  F  X 13928649914362 04-DEC-18 1       1       YES        FORSTANDBY
+47   135     B  1  A 14459700980690 25-MAR-24 1       1       NO         HRP-19-PEPLDR04029
+     115     B  1  A 14459700703209 25-MAR-24 1       1       NO         HRP-19-PEPLDR04029
+     60      B  0  A 14459698947530 23-MAR-24 1       1       NO         HRP-19-PEPLDR04029
+     46      B  0  X 14376167190991 23-SEP-22 1       1       YES        TAG20220923T163949
+     40      B  F  X 13928649914363 04-DEC-18 1       1       YES        FORSTANDBY
+48   135     B  1  A 14459700980690 25-MAR-24 1       1       NO         HRP-19-PEPLDR04029
+     115     B  1  A 14459700703209 25-MAR-24 1       1       NO         HRP-19-PEPLDR04029
+     60      B  0  A 14459698947530 23-MAR-24 1       1       NO         HRP-19-PEPLDR04029
+     50      B  0  X 14376167190984 23-SEP-22 1       1       YES        TAG20220923T163949
+     40      B  F  X 13928649914363 04-DEC-18 1       1       YES        FORSTANDBY
+49   138     B  1  A 14459700980678 25-MAR-24 1       1       NO         HRP-19-PEPLDR04029
+     113     B  1  A 14459700703204 25-MAR-24 1       1       NO         HRP-19-PEPLDR04029
+     62      B  0  A 14459698947523 23-MAR-24 1       1       NO         HRP-19-PEPLDR04029
+     51      B  0  X 14376167190986 23-SEP-22 1       1       YES        TAG20220923T163949
+     40      B  F  X 13928649914363 04-DEC-18 1       1       YES        FORSTANDBY
+50   137     B  1  A 14459700980692 25-MAR-24 1       1       NO         HRP-19-PEPLDR04029
+     114     B  1  A 14459700703210 25-MAR-24 1       1       NO         HRP-19-PEPLDR04029
+     59      B  0  A 14459698947533 23-MAR-24 1       1       NO         HRP-19-PEPLDR04029
+     51      B  0  X 14376167190986 23-SEP-22 1       1       YES        TAG20220923T163949
+     35      B  F  X 13928649914362 04-DEC-18 1       1       YES        FORSTANDBY
+51   137     B  1  A 14459700980692 25-MAR-24 1       1       NO         HRP-19-PEPLDR04029
+     114     B  1  A 14459700703210 25-MAR-24 1       1       NO         HRP-19-PEPLDR04029
+     59      B  0  A 14459698947533 23-MAR-24 1       1       NO         HRP-19-PEPLDR04029
+     50      B  0  X 14376167190984 23-SEP-22 1       1       YES        TAG20220923T163949
+     38      B  F  X 13928649914361 04-DEC-18 1       1       YES        FORSTANDBY
+52   135     B  1  A 14459700980690 25-MAR-24 1       1       NO         HRP-19-PEPLDR04029
+     115     B  1  A 14459700703209 25-MAR-24 1       1       NO         HRP-19-PEPLDR04029
+     60      B  0  A 14459698947530 23-MAR-24 1       1       NO         HRP-19-PEPLDR04029
+     50      B  0  X 14376167190984 23-SEP-22 1       1       YES        TAG20220923T163949
+     39      B  F  X 13928649914360 04-DEC-18 1       1       YES        FORSTANDBY
+53   138     B  1  A 14459700980678 25-MAR-24 1       1       NO         HRP-19-PEPLDR04029
+     113     B  1  A 14459700703204 25-MAR-24 1       1       NO         HRP-19-PEPLDR04029
+     62      B  0  A 14459698947523 23-MAR-24 1       1       NO         HRP-19-PEPLDR04029
+     49      B  0  X 14376167190989 23-SEP-22 1       1       YES        TAG20220923T163949
+     35      B  F  X 13928649914362 04-DEC-18 1       1       YES        FORSTANDBY
+54   135     B  1  A 14459700980690 25-MAR-24 1       1       NO         HRP-19-PEPLDR04029
+     115     B  1  A 14459700703209 25-MAR-24 1       1       NO         HRP-19-PEPLDR04029
+     60      B  0  A 14459698947530 23-MAR-24 1       1       NO         HRP-19-PEPLDR04029
+     51      B  0  X 14376167190986 23-SEP-22 1       1       YES        TAG20220923T163949
+     35      B  F  X 13928649914362 04-DEC-18 1       1       YES        FORSTANDBY
+55   136     B  1  A 14459700980688 25-MAR-24 1       1       NO         HRP-19-PEPLDR04029
+     112     B  1  A 14459700703206 25-MAR-24 1       1       NO         HRP-19-PEPLDR04029
+     58      B  0  A 14459698947527 23-MAR-24 1       1       NO         HRP-19-PEPLDR04029
+     51      B  0  X 14376167190986 23-SEP-22 1       1       YES        TAG20220923T163949
+     35      B  F  X 13928649914362 04-DEC-18 1       1       YES        FORSTANDBY
+56   139     B  1  A 14459700980675 25-MAR-24 1       1       NO         HRP-19-PEPLDR04029
+     116     B  1  A 14459700703201 25-MAR-24 1       1       NO         HRP-19-PEPLDR04029
+     61      B  0  A 14459698947520 23-MAR-24 1       1       NO         HRP-19-PEPLDR04029
+     50      B  0  X 14376167190984 23-SEP-22 1       1       YES        TAG20220923T163949
+     38      B  F  X 13928649914361 04-DEC-18 1       1       YES        FORSTANDBY
+57   139     B  1  A 14459700980675 25-MAR-24 1       1       NO         HRP-19-PEPLDR04029
+     116     B  1  A 14459700703201 25-MAR-24 1       1       NO         HRP-19-PEPLDR04029
+     61      B  0  A 14459698947520 23-MAR-24 1       1       NO         HRP-19-PEPLDR04029
+     46      B  0  X 14376167190991 23-SEP-22 1       1       YES        TAG20220923T163949
+     38      B  F  X 13928649914361 04-DEC-18 1       1       YES        FORSTANDBY
+58   135     B  1  A 14459700980690 25-MAR-24 1       1       NO         HRP-19-PEPLDR04029
+     115     B  1  A 14459700703209 25-MAR-24 1       1       NO         HRP-19-PEPLDR04029
+     60      B  0  A 14459698947530 23-MAR-24 1       1       NO         HRP-19-PEPLDR04029
+     50      B  0  X 14376167190984 23-SEP-22 1       1       YES        TAG20220923T163949
+     40      B  F  X 13928649914363 04-DEC-18 1       1       YES        FORSTANDBY
+59   136     B  1  A 14459700980688 25-MAR-24 1       1       NO         HRP-19-PEPLDR04029
+     112     B  1  A 14459700703206 25-MAR-24 1       1       NO         HRP-19-PEPLDR04029
+     58      B  0  A 14459698947527 23-MAR-24 1       1       NO         HRP-19-PEPLDR04029
+     51      B  0  X 14376167190986 23-SEP-22 1       1       YES        TAG20220923T163949
+     39      B  F  X 13928649914360 04-DEC-18 1       1       YES        FORSTANDBY
+60   137     B  1  A 14459700980692 25-MAR-24 1       1       NO         HRP-19-PEPLDR04029
+     114     B  1  A 14459700703210 25-MAR-24 1       1       NO         HRP-19-PEPLDR04029
+     59      B  0  A 14459698947533 23-MAR-24 1       1       NO         HRP-19-PEPLDR04029
+     46      B  0  X 14376167190991 23-SEP-22 1       1       YES        TAG20220923T163949
+     38      B  F  X 13928649914361 04-DEC-18 1       1       YES        FORSTANDBY
+61   138     B  1  A 14459700980678 25-MAR-24 1       1       NO         HRP-19-PEPLDR04029
+     113     B  1  A 14459700703204 25-MAR-24 1       1       NO         HRP-19-PEPLDR04029
+     62      B  0  A 14459698947523 23-MAR-24 1       1       NO         HRP-19-PEPLDR04029
+     49      B  0  X 14376167190989 23-SEP-22 1       1       YES        TAG20220923T163949
+     35      B  F  X 13928649914362 04-DEC-18 1       1       YES        FORSTANDBY
+62   138     B  1  A 14459700980678 25-MAR-24 1       1       NO         HRP-19-PEPLDR04029
+     113     B  1  A 14459700703204 25-MAR-24 1       1       NO         HRP-19-PEPLDR04029
+     62      B  0  A 14459698947523 23-MAR-24 1       1       NO         HRP-19-PEPLDR04029
+     46      B  0  X 14376167190991 23-SEP-22 1       1       YES        TAG20220923T163949
+     40      B  F  X 13928649914363 04-DEC-18 1       1       YES        FORSTANDBY
+63   136     B  1  A 14459700980688 25-MAR-24 1       1       NO         HRP-19-PEPLDR04029
+     112     B  1  A 14459700703206 25-MAR-24 1       1       NO         HRP-19-PEPLDR04029
+     58      B  0  A 14459698947527 23-MAR-24 1       1       NO         HRP-19-PEPLDR04029
+     49      B  0  X 14376167190989 23-SEP-22 1       1       YES        TAG20220923T163949
+     39      B  F  X 13928649914360 04-DEC-18 1       1       YES        FORSTANDBY
+64   137     B  1  A 14459700980692 25-MAR-24 1       1       NO         HRP-19-PEPLDR04029
+     114     B  1  A 14459700703210 25-MAR-24 1       1       NO         HRP-19-PEPLDR04029
+     59      B  0  A 14459698947533 23-MAR-24 1       1       NO         HRP-19-PEPLDR04029
+     49      B  0  X 14376167190989 23-SEP-22 1       1       YES        TAG20220923T163949
+     39      B  F  X 13928649914360 04-DEC-18 1       1       YES        FORSTANDBY
+65   138     B  1  A 14459700980678 25-MAR-24 1       1       NO         HRP-19-PEPLDR04029
+     113     B  1  A 14459700703204 25-MAR-24 1       1       NO         HRP-19-PEPLDR04029
+     62      B  0  A 14459698947523 23-MAR-24 1       1       NO         HRP-19-PEPLDR04029
+     51      B  0  X 14376167190986 23-SEP-22 1       1       YES        TAG20220923T163949
+     38      B  F  X 13928649914361 04-DEC-18 1       1       YES        FORSTANDBY
+66   139     B  1  A 14459700980675 25-MAR-24 1       1       NO         HRP-19-PEPLDR04029
+     116     B  1  A 14459700703201 25-MAR-24 1       1       NO         HRP-19-PEPLDR04029
+     61      B  0  A 14459698947520 23-MAR-24 1       1       NO         HRP-19-PEPLDR04029
+     46      B  0  X 14376167190991 23-SEP-22 1       1       YES        TAG20220923T163949
+     35      B  F  X 13928649914362 04-DEC-18 1       1       YES        FORSTANDBY
+67   135     B  1  A 14459700980690 25-MAR-24 1       1       NO         HRP-19-PEPLDR04029
+     115     B  1  A 14459700703209 25-MAR-24 1       1       NO         HRP-19-PEPLDR04029
+     60      B  0  A 14459698947530 23-MAR-24 1       1       NO         HRP-19-PEPLDR04029
+     51      B  0  X 14376167190986 23-SEP-22 1       1       YES        TAG20220923T163949
+     40      B  F  X 13928649914363 04-DEC-18 1       1       YES        FORSTANDBY
+68   137     B  1  A 14459700980692 25-MAR-24 1       1       NO         HRP-19-PEPLDR04029
+     114     B  1  A 14459700703210 25-MAR-24 1       1       NO         HRP-19-PEPLDR04029
+     59      B  0  A 14459698947533 23-MAR-24 1       1       NO         HRP-19-PEPLDR04029
+     46      B  0  X 14376167190991 23-SEP-22 1       1       YES        TAG20220923T163949
+     39      B  F  X 13928649914360 04-DEC-18 1       1       YES        FORSTANDBY
+69   138     B  1  A 14459700980678 25-MAR-24 1       1       NO         HRP-19-PEPLDR04029
+     113     B  1  A 14459700703204 25-MAR-24 1       1       NO         HRP-19-PEPLDR04029
+     62      B  0  A 14459698947523 23-MAR-24 1       1       NO         HRP-19-PEPLDR04029
+     50      B  0  X 14376167190984 23-SEP-22 1       1       YES        TAG20220923T163949
+     38      B  F  X 13928649914361 04-DEC-18 1       1       YES        FORSTANDBY
+70   139     B  1  A 14459700980675 25-MAR-24 1       1       NO         HRP-19-PEPLDR04029
+     116     B  1  A 14459700703201 25-MAR-24 1       1       NO         HRP-19-PEPLDR04029
+     61      B  0  A 14459698947520 23-MAR-24 1       1       NO         HRP-19-PEPLDR04029
+     49      B  0  X 14376167190989 23-SEP-22 1       1       YES        TAG20220923T163949
+     35      B  F  X 13928649914362 04-DEC-18 1       1       YES        FORSTANDBY
+71   135     B  1  A 14459700980690 25-MAR-24 1       1       NO         HRP-19-PEPLDR04029
+     115     B  1  A 14459700703209 25-MAR-24 1       1       NO         HRP-19-PEPLDR04029
+     60      B  0  A 14459698947530 23-MAR-24 1       1       NO         HRP-19-PEPLDR04029
+     46      B  0  X 14376167190991 23-SEP-22 1       1       YES        TAG20220923T163949
+72   137     B  1  A 14459700980692 25-MAR-24 1       1       NO         HRP-19-PEPLDR04029
+     114     B  1  A 14459700703210 25-MAR-24 1       1       NO         HRP-19-PEPLDR04029
+     59      B  0  A 14459698947533 23-MAR-24 1       1       NO         HRP-19-PEPLDR04029
+     53      B  F  X 14380177491161 08-NOV-22 1       1       YES        TAG20221108T222914
+     50      B  0  X 14376167190984 23-SEP-22 1       1       YES        TAG20220923T163949
+73   136     B  1  A 14459700980688 25-MAR-24 1       1       NO         HRP-19-PEPLDR04029
+     112     B  1  A 14459700703206 25-MAR-24 1       1       NO         HRP-19-PEPLDR04029
+     58      B  0  A 14459698947527 23-MAR-24 1       1       NO         HRP-19-PEPLDR04029
+     49      B  0  X 14376167190989 23-SEP-22 1       1       YES        TAG20220923T163949
+74   138     B  1  A 14459700980678 25-MAR-24 1       1       NO         HRP-19-PEPLDR04029
+     113     B  1  A 14459700703204 25-MAR-24 1       1       NO         HRP-19-PEPLDR04029
+     62      B  0  A 14459698947523 23-MAR-24 1       1       NO         HRP-19-PEPLDR04029
+     51      B  0  X 14376167190986 23-SEP-22 1       1       YES        TAG20220923T163949
+75   139     B  1  A 14459700980675 25-MAR-24 1       1       NO         HRP-19-PEPLDR04029
+     116     B  1  A 14459700703201 25-MAR-24 1       1       NO         HRP-19-PEPLDR04029
+     61      B  0  A 14459698947520 23-MAR-24 1       1       NO         HRP-19-PEPLDR04029
+     46      B  0  X 14376167190991 23-SEP-22 1       1       YES        TAG20220923T163949
+76   135     B  1  A 14459700980690 25-MAR-24 1       1       NO         HRP-19-PEPLDR04029
+     115     B  1  A 14459700703209 25-MAR-24 1       1       NO         HRP-19-PEPLDR04029
+     60      B  0  A 14459698947530 23-MAR-24 1       1       NO         HRP-19-PEPLDR04029
+     50      B  0  X 14376167190984 23-SEP-22 1       1       YES        TAG20220923T163949
+77   137     B  1  A 14459700980692 25-MAR-24 1       1       NO         HRP-19-PEPLDR04029
+     114     B  1  A 14459700703210 25-MAR-24 1       1       NO         HRP-19-PEPLDR04029
+     59      B  0  A 14459698947533 23-MAR-24 1       1       NO         HRP-19-PEPLDR04029
+     49      B  0  X 14376167190989 23-SEP-22 1       1       YES        TAG20220923T163949
+78   136     B  1  A 14459700980688 25-MAR-24 1       1       NO         HRP-19-PEPLDR04029
+     112     B  1  A 14459700703206 25-MAR-24 1       1       NO         HRP-19-PEPLDR04029
+     58      B  0  A 14459698947527 23-MAR-24 1       1       NO         HRP-19-PEPLDR04029
+     51      B  0  X 14376167190986 23-SEP-22 1       1       YES        TAG20220923T163949
+79   138     B  1  A 14459700980678 25-MAR-24 1       1       NO         HRP-19-PEPLDR04029
+     113     B  1  A 14459700703204 25-MAR-24 1       1       NO         HRP-19-PEPLDR04029
+     62      B  0  A 14459698947523 23-MAR-24 1       1       NO         HRP-19-PEPLDR04029
+     46      B  0  X 14376167190991 23-SEP-22 1       1       YES        TAG20220923T163949
+80   139     B  1  A 14459700980675 25-MAR-24 1       1       NO         HRP-19-PEPLDR04029
+     116     B  1  A 14459700703201 25-MAR-24 1       1       NO         HRP-19-PEPLDR04029
+     61      B  0  A 14459698947520 23-MAR-24 1       1       NO         HRP-19-PEPLDR04029
+     50      B  0  X 14376167190984 23-SEP-22 1       1       YES        TAG20220923T163949
+81   135     B  1  A 14459700980690 25-MAR-24 1       1       NO         HRP-19-PEPLDR04029
+     115     B  1  A 14459700703209 25-MAR-24 1       1       NO         HRP-19-PEPLDR04029
+     60      B  0  A 14459698947530 23-MAR-24 1       1       NO         HRP-19-PEPLDR04029
+     49      B  0  X 14376167190989 23-SEP-22 1       1       YES        TAG20220923T163949
+82   137     B  1  A 14459700980692 25-MAR-24 1       1       NO         HRP-19-PEPLDR04029
+     114     B  1  A 14459700703210 25-MAR-24 1       1       NO         HRP-19-PEPLDR04029
+     59      B  0  A 14459698947533 23-MAR-24 1       1       NO         HRP-19-PEPLDR04029
+83   138     B  1  A 14459700980678 25-MAR-24 1       1       NO         HRP-19-PEPLDR04029
+     113     B  1  A 14459700703204 25-MAR-24 1       1       NO         HRP-19-PEPLDR04029
+     62      B  0  A 14459698947523 23-MAR-24 1       1       NO         HRP-19-PEPLDR04029
+84   139     B  1  A 14459700980675 25-MAR-24 1       1       NO         HRP-19-PEPLDR04029
+     116     B  1  A 14459700703201 25-MAR-24 1       1       NO         HRP-19-PEPLDR04029
+     61      B  0  A 14459698947520 23-MAR-24 1       1       NO         HRP-19-PEPLDR04029
+85   136     B  1  A 14459700980688 25-MAR-24 1       1       NO         HRP-19-PEPLDR04029
+     112     B  1  A 14459700703206 25-MAR-24 1       1       NO         HRP-19-PEPLDR04029
+     58      B  0  A 14459698947527 23-MAR-24 1       1       NO         HRP-19-PEPLDR04029
+
+List of Archived Log Backups
+============================
+
+Thrd Seq     Low SCN    Low Time  BS Key  S #Pieces #Copies Compressed Tag
+---- ------- ---------- --------- ------- - ------- ------- ---------- ---
+1    61473   1302708230 15-APR-15 2       A 1       1       YES        TAG20150415T160443
+1    61474   1302747213 15-APR-15 2       A 1       1       YES        TAG20150415T160443
+1    61475   1302789991 15-APR-15 1       A 1       1       YES        TAG20150415T160443
+1    61476   1302818288 15-APR-15 1       A 1       1       YES        TAG20150415T160443
+1    61477   1302818668 15-APR-15 1       A 1       1       YES        TAG20150415T160443
+1    61478   1302818770 15-APR-15 1       A 1       1       YES        TAG20150415T160443
+1    61479   1302818881 15-APR-15 3       A 1       1       YES        TAG20150415T160443
+1    61480   1302818921 15-APR-15 3       A 1       1       YES        TAG20150415T160443
+1    61481   1302853559 15-APR-15 4       A 1       1       YES        TAG20150415T195542
+1    61482   1302891028 15-APR-15 4       A 1       1       YES        TAG20150415T195542
+1    61483   1302922442 15-APR-15 5       A 1       1       YES        TAG20150415T195542
+1    61484   1302952146 15-APR-15 5       A 1       1       YES        TAG20150415T195542
+1    61485   1302958376 15-APR-15 5       A 1       1       YES        TAG20150415T195542
+1    61486   1302958410 15-APR-15 5       A 1       1       YES        TAG20150415T195542
+1    61487   1302958441 15-APR-15 5       A 1       1       YES        TAG20150415T195542
+1    61488   1302958473 15-APR-15 5       A 1       1       YES        TAG20150415T195542
+1    61489   1302958582 15-APR-15 5       A 1       1       YES        TAG20150415T195542
+1    61490   1302958623 15-APR-15 6       A 1       1       YES        TAG20150415T195542
+1    61491   1302958674 15-APR-15 6       A 1       1       YES        TAG20150415T195542
+1    61492   1302958706 15-APR-15 6       A 1       1       YES        TAG20150415T195542
+1    61493   1302958779 15-APR-15 6       A 1       1       YES        TAG20150415T195542
+1    61494   1302958892 15-APR-15 8       A 1       1       YES        TAG20150415T200056
+1    61495   1302959551 15-APR-15 7       A 1       1       YES        TAG20150415T200056
+1    61496   1302959593 15-APR-15 7       A 1       1       YES        TAG20150415T200056
+1    61497   1302959672 15-APR-15 7       A 1       1       YES        TAG20150415T200056
+1    61498   1302959704 15-APR-15 9       A 1       1       YES        TAG20150415T200056
+1    61499   1302959738 15-APR-15 9       A 1       1       YES        TAG20150415T200056
+1    61500   1302959988 15-APR-15 17      A 1       1       YES        TAG20150415T222405
+1    61501   1302988670 15-APR-15 19      A 1       1       YES        TAG20150415T222405
+1    61502   1303016088 15-APR-15 20      A 1       1       YES        TAG20150415T222405
+1    61503   1303037099 15-APR-15 20      A 1       1       YES        TAG20150415T222405
+1    61504   1303037144 15-APR-15 18      A 1       1       YES        TAG20150415T222405
+1    61505   1303037174 15-APR-15 18      A 1       1       YES        TAG20150415T222405
+1    61506   1303037203 15-APR-15 21      A 1       1       YES        TAG20150415T222405
+1    61507   1303037234 15-APR-15 21      A 1       1       YES        TAG20150415T222405
+1    101036  14459639289039 22-MAR-24 80      A 1       1       NO         HRP-19-PEPLDR04029
+                                  67      A 1       1       NO         HRP-19-PEPLDR04029
+1    101037  14459645495943 22-MAR-24 80      A 1       1       NO         HRP-19-PEPLDR04029
+                                  67      A 1       1       NO         HRP-19-PEPLDR04029
+1    101038  14459645553009 22-MAR-24 80      A 1       1       NO         HRP-19-PEPLDR04029
+                                  67      A 1       1       NO         HRP-19-PEPLDR04029
+1    101039  14459645826730 22-MAR-24 80      A 1       1       NO         HRP-19-PEPLDR04029
+                                  67      A 1       1       NO         HRP-19-PEPLDR04029
+1    101040  14459650108160 22-MAR-24 80      A 1       1       NO         HRP-19-PEPLDR04029
+                                  67      A 1       1       NO         HRP-19-PEPLDR04029
+1    101041  14459650287188 22-MAR-24 80      A 1       1       NO         HRP-19-PEPLDR04029
+                                  67      A 1       1       NO         HRP-19-PEPLDR04029
+1    101042  14459650478876 22-MAR-24 80      A 1       1       NO         HRP-19-PEPLDR04029
+                                  67      A 1       1       NO         HRP-19-PEPLDR04029
+1    101043  14459650654809 22-MAR-24 80      A 1       1       NO         HRP-19-PEPLDR04029
+                                  67      A 1       1       NO         HRP-19-PEPLDR04029
+1    101044  14459650838763 22-MAR-24 80      A 1       1       NO         HRP-19-PEPLDR04029
+                                  67      A 1       1       NO         HRP-19-PEPLDR04029
+1    101045  14459651016706 22-MAR-24 80      A 1       1       NO         HRP-19-PEPLDR04029
+                                  67      A 1       1       NO         HRP-19-PEPLDR04029
+1    101046  14459651195957 22-MAR-24 80      A 1       1       NO         HRP-19-PEPLDR04029
+                                  67      A 1       1       NO         HRP-19-PEPLDR04029
+1    101047  14459651278334 22-MAR-24 80      A 1       1       NO         HRP-19-PEPLDR04029
+                                  67      A 1       1       NO         HRP-19-PEPLDR04029
+1    101048  14459651573751 22-MAR-24 80      A 1       1       NO         HRP-19-PEPLDR04029
+                                  67      A 1       1       NO         HRP-19-PEPLDR04029
+1    101049  14459651609316 22-MAR-24 80      A 1       1       NO         HRP-19-PEPLDR04029
+                                  67      A 1       1       NO         HRP-19-PEPLDR04029
+1    101050  14459680048529 22-MAR-24 80      A 1       1       NO         HRP-19-PEPLDR04029
+                                  67      A 1       1       NO         HRP-19-PEPLDR04029
+1    101051  14459680089788 22-MAR-24 80      A 1       1       NO         HRP-19-PEPLDR04029
+                                  67      A 1       1       NO         HRP-19-PEPLDR04029
+1    101052  14459680749185 22-MAR-24 80      A 1       1       NO         HRP-19-PEPLDR04029
+                                  67      A 1       1       NO         HRP-19-PEPLDR04029
+1    101053  14459689036364 22-MAR-24 80      A 1       1       NO         HRP-19-PEPLDR04029
+                                  67      A 1       1       NO         HRP-19-PEPLDR04029
+1    101054  14459689049965 22-MAR-24 80      A 1       1       NO         HRP-19-PEPLDR04029
+                                  67      A 1       1       NO         HRP-19-PEPLDR04029
+1    101055  14459689062409 22-MAR-24 80      A 1       1       NO         HRP-19-PEPLDR04029
+                                  67      A 1       1       NO         HRP-19-PEPLDR04029
+1    101056  14459689067774 22-MAR-24 80      A 1       1       NO         HRP-19-PEPLDR04029
+                                  67      A 1       1       NO         HRP-19-PEPLDR04029
+1    101057  14459689075291 22-MAR-24 80      A 1       1       NO         HRP-19-PEPLDR04029
+                                  67      A 1       1       NO         HRP-19-PEPLDR04029
+1    101058  14459689078892 22-MAR-24 80      A 1       1       NO         HRP-19-PEPLDR04029
+                                  67      A 1       1       NO         HRP-19-PEPLDR04029
+1    101059  14459689082521 22-MAR-24 80      A 1       1       NO         HRP-19-PEPLDR04029
+                                  67      A 1       1       NO         HRP-19-PEPLDR04029
+1    101060  14459691118889 22-MAR-24 80      A 1       1       NO         HRP-19-PEPLDR04029
+                                  67      A 1       1       NO         HRP-19-PEPLDR04029
+1    101061  14459694265677 22-MAR-24 80      A 1       1       NO         HRP-19-PEPLDR04029
+                                  67      A 1       1       NO         HRP-19-PEPLDR04029
+1    101062  14459694268807 22-MAR-24 80      A 1       1       NO         HRP-19-PEPLDR04029
+                                  67      A 1       1       NO         HRP-19-PEPLDR04029
+1    101063  14459694279879 22-MAR-24 80      A 1       1       NO         HRP-19-PEPLDR04029
+                                  67      A 1       1       NO         HRP-19-PEPLDR04029
+1    101064  14459694283978 22-MAR-24 80      A 1       1       NO         HRP-19-PEPLDR04029
+                                  67      A 1       1       NO         HRP-19-PEPLDR04029
+1    101065  14459694284158 22-MAR-24 80      A 1       1       NO         HRP-19-PEPLDR04029
+                                  66      A 1       1       NO         HRP-19-PEPLDR04029
+1    101066  14459694284870 22-MAR-24 80      A 1       1       NO         HRP-19-PEPLDR04029
+                                  66      A 1       1       NO         HRP-19-PEPLDR04029
+1    101067  14459694289463 22-MAR-24 77      A 1       1       NO         HRP-19-PEPLDR04029
+                                  66      A 1       1       NO         HRP-19-PEPLDR04029
+1    101068  14459694289593 22-MAR-24 77      A 1       1       NO         HRP-19-PEPLDR04029
+                                  66      A 1       1       NO         HRP-19-PEPLDR04029
+1    101069  14459694289596 22-MAR-24 77      A 1       1       NO         HRP-19-PEPLDR04029
+                                  66      A 1       1       NO         HRP-19-PEPLDR04029
+1    101070  14459694289604 22-MAR-24 77      A 1       1       NO         HRP-19-PEPLDR04029
+                                  66      A 1       1       NO         HRP-19-PEPLDR04029
+1    1       14459694289614 22-MAR-24 78      A 1       1       NO         HRP-19-PEPLDR04029
+                                  68      A 1       1       NO         HRP-19-PEPLDR04029
+1    2       14459694292980 22-MAR-24 78      A 1       1       NO         HRP-19-PEPLDR04029
+                                  68      A 1       1       NO         HRP-19-PEPLDR04029
+1    3       14459694292983 22-MAR-24 78      A 1       1       NO         HRP-19-PEPLDR04029
+                                  68      A 1       1       NO         HRP-19-PEPLDR04029
+1    4       14459694305400 22-MAR-24 78      A 1       1       NO         HRP-19-PEPLDR04029
+                                  68      A 1       1       NO         HRP-19-PEPLDR04029
+1    5       14459694308162 22-MAR-24 78      A 1       1       NO         HRP-19-PEPLDR04029
+                                  68      A 1       1       NO         HRP-19-PEPLDR04029
+1    6       14459694313977 22-MAR-24 78      A 1       1       NO         HRP-19-PEPLDR04029
+                                  68      A 1       1       NO         HRP-19-PEPLDR04029
+1    7       14459694318544 22-MAR-24 78      A 1       1       NO         HRP-19-PEPLDR04029
+                                  68      A 1       1       NO         HRP-19-PEPLDR04029
+1    8       14459694322982 22-MAR-24 78      A 1       1       NO         HRP-19-PEPLDR04029
+                                  68      A 1       1       NO         HRP-19-PEPLDR04029
+1    9       14459694326787 22-MAR-24 78      A 1       1       NO         HRP-19-PEPLDR04029
+                                  68      A 1       1       NO         HRP-19-PEPLDR04029
+1    10      14459694331402 22-MAR-24 78      A 1       1       NO         HRP-19-PEPLDR04029
+                                  68      A 1       1       NO         HRP-19-PEPLDR04029
+1    11      14459694336227 22-MAR-24 78      A 1       1       NO         HRP-19-PEPLDR04029
+                                  68      A 1       1       NO         HRP-19-PEPLDR04029
+1    12      14459694341813 22-MAR-24 78      A 1       1       NO         HRP-19-PEPLDR04029
+                                  68      A 1       1       NO         HRP-19-PEPLDR04029
+1    13      14459694347349 22-MAR-24 78      A 1       1       NO         HRP-19-PEPLDR04029
+                                  68      A 1       1       NO         HRP-19-PEPLDR04029
+1    14      14459694355094 22-MAR-24 78      A 1       1       NO         HRP-19-PEPLDR04029
+                                  68      A 1       1       NO         HRP-19-PEPLDR04029
+1    15      14459694358396 22-MAR-24 78      A 1       1       NO         HRP-19-PEPLDR04029
+                                  68      A 1       1       NO         HRP-19-PEPLDR04029
+1    16      14459694361196 22-MAR-24 75      A 1       1       NO         HRP-19-PEPLDR04029
+                                  65      A 1       1       NO         HRP-19-PEPLDR04029
+1    17      14459694363957 22-MAR-24 75      A 1       1       NO         HRP-19-PEPLDR04029
+                                  65      A 1       1       NO         HRP-19-PEPLDR04029
+1    18      14459694366691 22-MAR-24 75      A 1       1       NO         HRP-19-PEPLDR04029
+                                  65      A 1       1       NO         HRP-19-PEPLDR04029
+1    19      14459694372062 22-MAR-24 75      A 1       1       NO         HRP-19-PEPLDR04029
+                                  65      A 1       1       NO         HRP-19-PEPLDR04029
+1    20      14459694542289 22-MAR-24 75      A 1       1       NO         HRP-19-PEPLDR04029
+                                  65      A 1       1       NO         HRP-19-PEPLDR04029
+1    21      14459694627413 22-MAR-24 75      A 1       1       NO         HRP-19-PEPLDR04029
+                                  65      A 1       1       NO         HRP-19-PEPLDR04029
+1    22      14459694777816 22-MAR-24 75      A 1       1       NO         HRP-19-PEPLDR04029
+                                  65      A 1       1       NO         HRP-19-PEPLDR04029
+1    23      14459694826608 22-MAR-24 75      A 1       1       NO         HRP-19-PEPLDR04029
+                                  65      A 1       1       NO         HRP-19-PEPLDR04029
+1    24      14459694911169 22-MAR-24 75      A 1       1       NO         HRP-19-PEPLDR04029
+                                  65      A 1       1       NO         HRP-19-PEPLDR04029
+1    25      14459695250742 22-MAR-24 75      A 1       1       NO         HRP-19-PEPLDR04029
+                                  65      A 1       1       NO         HRP-19-PEPLDR04029
+1    26      14459695254834 22-MAR-24 75      A 1       1       NO         HRP-19-PEPLDR04029
+                                  65      A 1       1       NO         HRP-19-PEPLDR04029
+1    27      14459695273246 22-MAR-24 75      A 1       1       NO         HRP-19-PEPLDR04029
+                                  65      A 1       1       NO         HRP-19-PEPLDR04029
+1    28      14459695384304 22-MAR-24 75      A 1       1       NO         HRP-19-PEPLDR04029
+                                  65      A 1       1       NO         HRP-19-PEPLDR04029
+1    29      14459695391471 22-MAR-24 75      A 1       1       NO         HRP-19-PEPLDR04029
+                                  65      A 1       1       NO         HRP-19-PEPLDR04029
+1    30      14459695410056 22-MAR-24 75      A 1       1       NO         HRP-19-PEPLDR04029
+                                  65      A 1       1       NO         HRP-19-PEPLDR04029
+1    31      14459695460799 22-MAR-24 75      A 1       1       NO         HRP-19-PEPLDR04029
+                                  65      A 1       1       NO         HRP-19-PEPLDR04029
+1    32      14459695551201 22-MAR-24 75      A 1       1       NO         HRP-19-PEPLDR04029
+                                  65      A 1       1       NO         HRP-19-PEPLDR04029
+1    33      14459695552364 22-MAR-24 75      A 1       1       NO         HRP-19-PEPLDR04029
+                                  65      A 1       1       NO         HRP-19-PEPLDR04029
+1    34      14459695559638 23-MAR-24 75      A 1       1       NO         HRP-19-PEPLDR04029
+                                  65      A 1       1       NO         HRP-19-PEPLDR04029
+1    35      14459695560739 23-MAR-24 75      A 1       1       NO         HRP-19-PEPLDR04029
+                                  65      A 1       1       NO         HRP-19-PEPLDR04029
+1    36      14459695563620 23-MAR-24 75      A 1       1       NO         HRP-19-PEPLDR04029
+                                  65      A 1       1       NO         HRP-19-PEPLDR04029
+1    37      14459695564600 23-MAR-24 75      A 1       1       NO         HRP-19-PEPLDR04029
+                                  65      A 1       1       NO         HRP-19-PEPLDR04029
+1    38      14459695567722 23-MAR-24 75      A 1       1       NO         HRP-19-PEPLDR04029
+                                  65      A 1       1       NO         HRP-19-PEPLDR04029
+1    39      14459695568673 23-MAR-24 75      A 1       1       NO         HRP-19-PEPLDR04029
+                                  65      A 1       1       NO         HRP-19-PEPLDR04029
+1    40      14459695574884 23-MAR-24 75      A 1       1       NO         HRP-19-PEPLDR04029
+                                  65      A 1       1       NO         HRP-19-PEPLDR04029
+1    41      14459695577785 23-MAR-24 75      A 1       1       NO         HRP-19-PEPLDR04029
+                                  65      A 1       1       NO         HRP-19-PEPLDR04029
+1    42      14459695579602 23-MAR-24 75      A 1       1       NO         HRP-19-PEPLDR04029
+                                  65      A 1       1       NO         HRP-19-PEPLDR04029
+1    43      14459695581929 23-MAR-24 75      A 1       1       NO         HRP-19-PEPLDR04029
+                                  65      A 1       1       NO         HRP-19-PEPLDR04029
+1    44      14459695583678 23-MAR-24 75      A 1       1       NO         HRP-19-PEPLDR04029
+                                  65      A 1       1       NO         HRP-19-PEPLDR04029
+1    45      14459695586084 23-MAR-24 75      A 1       1       NO         HRP-19-PEPLDR04029
+                                  70      A 1       1       NO         HRP-19-PEPLDR04029
+1    46      14459695587574 23-MAR-24 75      A 1       1       NO         HRP-19-PEPLDR04029
+                                  70      A 1       1       NO         HRP-19-PEPLDR04029
+1    47      14459695590107 23-MAR-24 79      A 1       1       NO         HRP-19-PEPLDR04029
+                                  70      A 1       1       NO         HRP-19-PEPLDR04029
+1    48      14459695591473 23-MAR-24 79      A 1       1       NO         HRP-19-PEPLDR04029
+                                  70      A 1       1       NO         HRP-19-PEPLDR04029
+1    49      14459695593822 23-MAR-24 79      A 1       1       NO         HRP-19-PEPLDR04029
+                                  70      A 1       1       NO         HRP-19-PEPLDR04029
+1    50      14459695595276 23-MAR-24 79      A 1       1       NO         HRP-19-PEPLDR04029
+                                  70      A 1       1       NO         HRP-19-PEPLDR04029
+1    51      14459695597873 23-MAR-24 79      A 1       1       NO         HRP-19-PEPLDR04029
+                                  70      A 1       1       NO         HRP-19-PEPLDR04029
+1    52      14459695599807 23-MAR-24 79      A 1       1       NO         HRP-19-PEPLDR04029
+                                  70      A 1       1       NO         HRP-19-PEPLDR04029
+1    53      14459695602230 23-MAR-24 79      A 1       1       NO         HRP-19-PEPLDR04029
+                                  70      A 1       1       NO         HRP-19-PEPLDR04029
+1    54      14459695603695 23-MAR-24 79      A 1       1       NO         HRP-19-PEPLDR04029
+                                  70      A 1       1       NO         HRP-19-PEPLDR04029
+1    55      14459695626230 23-MAR-24 79      A 1       1       NO         HRP-19-PEPLDR04029
+                                  70      A 1       1       NO         HRP-19-PEPLDR04029
+1    56      14459695956618 23-MAR-24 79      A 1       1       NO         HRP-19-PEPLDR04029
+                                  70      A 1       1       NO         HRP-19-PEPLDR04029
+1    57      14459696068287 23-MAR-24 79      A 1       1       NO         HRP-19-PEPLDR04029
+                                  70      A 1       1       NO         HRP-19-PEPLDR04029
+1    58      14459696189291 23-MAR-24 79      A 1       1       NO         HRP-19-PEPLDR04029
+                                  70      A 1       1       NO         HRP-19-PEPLDR04029
+1    59      14459696285435 23-MAR-24 79      A 1       1       NO         HRP-19-PEPLDR04029
+                                  70      A 1       1       NO         HRP-19-PEPLDR04029
+1    60      14459696430651 23-MAR-24 79      A 1       1       NO         HRP-19-PEPLDR04029
+                                  70      A 1       1       NO         HRP-19-PEPLDR04029
+1    61      14459696631280 23-MAR-24 79      A 1       1       NO         HRP-19-PEPLDR04029
+                                  70      A 1       1       NO         HRP-19-PEPLDR04029
+1    62      14459696817657 23-MAR-24 79      A 1       1       NO         HRP-19-PEPLDR04029
+                                  70      A 1       1       NO         HRP-19-PEPLDR04029
+1    63      14459696930386 23-MAR-24 79      A 1       1       NO         HRP-19-PEPLDR04029
+                                  70      A 1       1       NO         HRP-19-PEPLDR04029
+1    64      14459697036936 23-MAR-24 79      A 1       1       NO         HRP-19-PEPLDR04029
+                                  70      A 1       1       NO         HRP-19-PEPLDR04029
+1    65      14459697164854 23-MAR-24 79      A 1       1       NO         HRP-19-PEPLDR04029
+                                  70      A 1       1       NO         HRP-19-PEPLDR04029
+1    66      14459697208190 23-MAR-24 79      A 1       1       NO         HRP-19-PEPLDR04029
+                                  70      A 1       1       NO         HRP-19-PEPLDR04029
+1    67      14459697372129 23-MAR-24 79      A 1       1       NO         HRP-19-PEPLDR04029
+                                  70      A 1       1       NO         HRP-19-PEPLDR04029
+1    68      14459697419399 23-MAR-24 81      A 1       1       NO         HRP-19-PEPLDR04029
+                                  69      A 1       1       NO         HRP-19-PEPLDR04029
+1    69      14459697472030 23-MAR-24 81      A 1       1       NO         HRP-19-PEPLDR04029
+                                  69      A 1       1       NO         HRP-19-PEPLDR04029
+1    70      14459697527979 23-MAR-24 81      A 1       1       NO         HRP-19-PEPLDR04029
+                                  69      A 1       1       NO         HRP-19-PEPLDR04029
+1    71      14459697597918 23-MAR-24 81      A 1       1       NO         HRP-19-PEPLDR04029
+                                  69      A 1       1       NO         HRP-19-PEPLDR04029
+1    72      14459697649426 23-MAR-24 81      A 1       1       NO         HRP-19-PEPLDR04029
+                                  69      A 1       1       NO         HRP-19-PEPLDR04029
+1    73      14459697688702 23-MAR-24 81      A 1       1       NO         HRP-19-PEPLDR04029
+                                  69      A 1       1       NO         HRP-19-PEPLDR04029
+1    74      14459697756095 23-MAR-24 81      A 1       1       NO         HRP-19-PEPLDR04029
+                                  69      A 1       1       NO         HRP-19-PEPLDR04029
+1    75      14459697790353 23-MAR-24 81      A 1       1       NO         HRP-19-PEPLDR04029
+                                  69      A 1       1       NO         HRP-19-PEPLDR04029
+1    76      14459697828322 23-MAR-24 81      A 1       1       NO         HRP-19-PEPLDR04029
+                                  69      A 1       1       NO         HRP-19-PEPLDR04029
+1    77      14459697856884 23-MAR-24 81      A 1       1       NO         HRP-19-PEPLDR04029
+                                  69      A 1       1       NO         HRP-19-PEPLDR04029
+1    78      14459697884455 23-MAR-24 81      A 1       1       NO         HRP-19-PEPLDR04029
+                                  69      A 1       1       NO         HRP-19-PEPLDR04029
+1    79      14459697984521 23-MAR-24 81      A 1       1       NO         HRP-19-PEPLDR04029
+                                  69      A 1       1       NO         HRP-19-PEPLDR04029
+1    80      14459698035026 23-MAR-24 81      A 1       1       NO         HRP-19-PEPLDR04029
+                                  69      A 1       1       NO         HRP-19-PEPLDR04029
+1    81      14459698073666 23-MAR-24 74      A 1       1       NO         HRP-19-PEPLDR04029
+                                  64      A 1       1       NO         HRP-19-PEPLDR04029
+1    82      14459698116018 23-MAR-24 74      A 1       1       NO         HRP-19-PEPLDR04029
+                                  64      A 1       1       NO         HRP-19-PEPLDR04029
+1    83      14459698165600 23-MAR-24 74      A 1       1       NO         HRP-19-PEPLDR04029
+                                  64      A 1       1       NO         HRP-19-PEPLDR04029
+1    84      14459698199158 23-MAR-24 74      A 1       1       NO         HRP-19-PEPLDR04029
+                                  64      A 1       1       NO         HRP-19-PEPLDR04029
+1    85      14459698276666 23-MAR-24 74      A 1       1       NO         HRP-19-PEPLDR04029
+                                  64      A 1       1       NO         HRP-19-PEPLDR04029
+1    86      14459698340084 23-MAR-24 74      A 1       1       NO         HRP-19-PEPLDR04029
+                                  64      A 1       1       NO         HRP-19-PEPLDR04029
+1    87      14459698427048 23-MAR-24 74      A 1       1       NO         HRP-19-PEPLDR04029
+                                  64      A 1       1       NO         HRP-19-PEPLDR04029
+1    88      14459698659884 23-MAR-24 74      A 1       1       NO         HRP-19-PEPLDR04029
+                                  64      A 1       1       NO         HRP-19-PEPLDR04029
+1    89      14459698721674 23-MAR-24 74      A 1       1       NO         HRP-19-PEPLDR04029
+                                  64      A 1       1       NO         HRP-19-PEPLDR04029
+1    90      14459698811499 23-MAR-24 74      A 1       1       NO         HRP-19-PEPLDR04029
+                                  64      A 1       1       NO         HRP-19-PEPLDR04029
+1    91      14459698826186 23-MAR-24 74      A 1       1       NO         HRP-19-PEPLDR04029
+                                  64      A 1       1       NO         HRP-19-PEPLDR04029
+1    92      14459698846956 23-MAR-24 74      A 1       1       NO         HRP-19-PEPLDR04029
+                                  64      A 1       1       NO         HRP-19-PEPLDR04029
+1    93      14459698867235 23-MAR-24 74      A 1       1       NO         HRP-19-PEPLDR04029
+                                  64      A 1       1       NO         HRP-19-PEPLDR04029
+1    94      14459698894421 23-MAR-24 74      A 1       1       NO         HRP-19-PEPLDR04029
+                                  64      A 1       1       NO         HRP-19-PEPLDR04029
+1    95      14459698901913 23-MAR-24 74      A 1       1       NO         HRP-19-PEPLDR04029
+                                  64      A 1       1       NO         HRP-19-PEPLDR04029
+1    96      14459698923394 23-MAR-24 74      A 1       1       NO         HRP-19-PEPLDR04029
+                                  64      A 1       1       NO         HRP-19-PEPLDR04029
+1    97      14459698931012 23-MAR-24 74      A 1       1       NO         HRP-19-PEPLDR04029
+                                  64      A 1       1       NO         HRP-19-PEPLDR04029
+1    98      14459698942108 23-MAR-24 74      A 1       1       NO         HRP-19-PEPLDR04029
+                                  64      A 1       1       NO         HRP-19-PEPLDR04029
+1    99      14459698948226 23-MAR-24 74      A 1       1       NO         HRP-19-PEPLDR04029
+                                  64      A 1       1       NO         HRP-19-PEPLDR04029
+1    100     14459699240593 23-MAR-24 74      A 1       1       NO         HRP-19-PEPLDR04029
+                                  64      A 1       1       NO         HRP-19-PEPLDR04029
+1    101     14459699252107 23-MAR-24 74      A 1       1       NO         HRP-19-PEPLDR04029
+                                  64      A 1       1       NO         HRP-19-PEPLDR04029
+1    102     14459699306483 23-MAR-24 74      A 1       1       NO         HRP-19-PEPLDR04029
+                                  64      A 1       1       NO         HRP-19-PEPLDR04029
+1    103     14459699317585 23-MAR-24 74      A 1       1       NO         HRP-19-PEPLDR04029
+                                  64      A 1       1       NO         HRP-19-PEPLDR04029
+1    104     14459699334826 23-MAR-24 74      A 1       1       NO         HRP-19-PEPLDR04029
+                                  64      A 1       1       NO         HRP-19-PEPLDR04029
+1    105     14459699340388 23-MAR-24 74      A 1       1       NO         HRP-19-PEPLDR04029
+                                  64      A 1       1       NO         HRP-19-PEPLDR04029
+1    106     14459699354693 23-MAR-24 74      A 1       1       NO         HRP-19-PEPLDR04029
+                                  64      A 1       1       NO         HRP-19-PEPLDR04029
+1    107     14459699360837 23-MAR-24 74      A 1       1       NO         HRP-19-PEPLDR04029
+                                  64      A 1       1       NO         HRP-19-PEPLDR04029
+1    108     14459699363210 24-MAR-24 74      A 1       1       NO         HRP-19-PEPLDR04029
+                                  64      A 1       1       NO         HRP-19-PEPLDR04029
+1    109     14459699363252 24-MAR-24 89      A 1       1       NO         HRP-19-PEPLDR04029
+                                  74      A 1       1       NO         HRP-19-PEPLDR04029
+1    110     14459699453932 24-MAR-24 89      A 1       1       NO         HRP-19-PEPLDR04029
+                                  74      A 1       1       NO         HRP-19-PEPLDR04029
+1    111     14459699460132 24-MAR-24 89      A 1       1       NO         HRP-19-PEPLDR04029
+                                  74      A 1       1       NO         HRP-19-PEPLDR04029
+1    112     14459699486212 24-MAR-24 90      A 1       1       NO         HRP-19-PEPLDR04029
+                                  76      A 1       1       NO         HRP-19-PEPLDR04029
+1    113     14459699589390 24-MAR-24 85      A 1       1       NO         HRP-19-PEPLDR04029
+                                  76      A 1       1       NO         HRP-19-PEPLDR04029
+1    114     14459699609281 24-MAR-24 85      A 1       1       NO         HRP-19-PEPLDR04029
+                                  76      A 1       1       NO         HRP-19-PEPLDR04029
+1    115     14459699614889 24-MAR-24 85      A 1       1       NO         HRP-19-PEPLDR04029
+                                  76      A 1       1       NO         HRP-19-PEPLDR04029
+1    116     14459699619930 24-MAR-24 85      A 1       1       NO         HRP-19-PEPLDR04029
+                                  76      A 1       1       NO         HRP-19-PEPLDR04029
+1    117     14459699620018 24-MAR-24 95      A 1       1       NO         HRP-19-PEPLDR04029
+                                  86      A 1       1       NO         HRP-19-PEPLDR04029
+1    118     14459699625391 24-MAR-24 95      A 1       1       NO         HRP-19-PEPLDR04029
+                                  86      A 1       1       NO         HRP-19-PEPLDR04029
+1    119     14459699632448 24-MAR-24 95      A 1       1       NO         HRP-19-PEPLDR04029
+                                  86      A 1       1       NO         HRP-19-PEPLDR04029
+1    120     14459699639668 24-MAR-24 95      A 1       1       NO         HRP-19-PEPLDR04029
+                                  86      A 1       1       NO         HRP-19-PEPLDR04029
+1    121     14459699646845 24-MAR-24 98      A 1       1       NO         HRP-19-PEPLDR04029
+                                  87      A 1       1       NO         HRP-19-PEPLDR04029
+1    122     14459699651977 24-MAR-24 98      A 1       1       NO         HRP-19-PEPLDR04029
+                                  87      A 1       1       NO         HRP-19-PEPLDR04029
+1    123     14459699671993 24-MAR-24 98      A 1       1       NO         HRP-19-PEPLDR04029
+                                  87      A 1       1       NO         HRP-19-PEPLDR04029
+1    124     14459699677100 24-MAR-24 98      A 1       1       NO         HRP-19-PEPLDR04029
+                                  87      A 1       1       NO         HRP-19-PEPLDR04029
+1    125     14459699687233 24-MAR-24 96      A 1       1       NO         HRP-19-PEPLDR04029
+                                  88      A 1       1       NO         HRP-19-PEPLDR04029
+1    126     14459699687373 24-MAR-24 104     A 1       1       NO         HRP-19-PEPLDR04029
+                                  96      A 1       1       NO         HRP-19-PEPLDR04029
+1    127     14459699692906 24-MAR-24 104     A 1       1       NO         HRP-19-PEPLDR04029
+                                  96      A 1       1       NO         HRP-19-PEPLDR04029
+1    128     14459699699854 24-MAR-24 104     A 1       1       NO         HRP-19-PEPLDR04029
+                                  96      A 1       1       NO         HRP-19-PEPLDR04029
+1    129     14459699705041 24-MAR-24 104     A 1       1       NO         HRP-19-PEPLDR04029
+                                  97      A 1       1       NO         HRP-19-PEPLDR04029
+1    130     14459699712477 24-MAR-24 104     A 1       1       NO         HRP-19-PEPLDR04029
+                                  94      A 1       1       NO         HRP-19-PEPLDR04029
+1    131     14459699717613 24-MAR-24 104     A 1       1       NO         HRP-19-PEPLDR04029
+                                  94      A 1       1       NO         HRP-19-PEPLDR04029
+1    132     14459699724640 24-MAR-24 104     A 1       1       NO         HRP-19-PEPLDR04029
+                                  94      A 1       1       NO         HRP-19-PEPLDR04029
+1    133     14459699729757 24-MAR-24 104     A 1       1       NO         HRP-19-PEPLDR04029
+                                  94      A 1       1       NO         HRP-19-PEPLDR04029
+1    134     14459699736442 24-MAR-24 104     A 1       1       NO         HRP-19-PEPLDR04029
+                                  99      A 1       1       NO         HRP-19-PEPLDR04029
+1    135     14459699736614 24-MAR-24 118     A 1       1       NO         HRP-19-PEPLDR04029
+                                  104     A 1       1       NO         HRP-19-PEPLDR04029
+1    136     14459699742086 24-MAR-24 118     A 1       1       NO         HRP-19-PEPLDR04029
+                                  104     A 1       1       NO         HRP-19-PEPLDR04029
+1    137     14459699749266 24-MAR-24 118     A 1       1       NO         HRP-19-PEPLDR04029
+                                  104     A 1       1       NO         HRP-19-PEPLDR04029
+1    138     14459699755186 24-MAR-24 118     A 1       1       NO         HRP-19-PEPLDR04029
+                                  108     A 1       1       NO         HRP-19-PEPLDR04029
+1    139     14459699762294 24-MAR-24 118     A 1       1       NO         HRP-19-PEPLDR04029
+                                  108     A 1       1       NO         HRP-19-PEPLDR04029
+1    140     14459699767353 24-MAR-24 118     A 1       1       NO         HRP-19-PEPLDR04029
+                                  108     A 1       1       NO         HRP-19-PEPLDR04029
+1    141     14459699779986 24-MAR-24 118     A 1       1       NO         HRP-19-PEPLDR04029
+                                  108     A 1       1       NO         HRP-19-PEPLDR04029
+1    142     14459699785131 24-MAR-24 118     A 1       1       NO         HRP-19-PEPLDR04029
+                                  108     A 1       1       NO         HRP-19-PEPLDR04029
+1    143     14459699791843 24-MAR-24 118     A 1       1       NO         HRP-19-PEPLDR04029
+                                  108     A 1       1       NO         HRP-19-PEPLDR04029
+1    144     14459699791939 24-MAR-24 118     A 1       1       NO         HRP-19-PEPLDR04029
+                                  108     A 1       1       NO         HRP-19-PEPLDR04029
+1    145     14459699796913 24-MAR-24 118     A 1       1       NO         HRP-19-PEPLDR04029
+                                  108     A 1       1       NO         HRP-19-PEPLDR04029
+1    146     14459699820077 24-MAR-24 123     A 1       1       NO         HRP-19-PEPLDR04029
+                                  108     A 1       1       NO         HRP-19-PEPLDR04029
+1    147     14459699835264 24-MAR-24 123     A 1       1       NO         HRP-19-PEPLDR04029
+                                  108     A 1       1       NO         HRP-19-PEPLDR04029
+1    148     14459699851905 24-MAR-24 123     A 1       1       NO         HRP-19-PEPLDR04029
+                                  108     A 1       1       NO         HRP-19-PEPLDR04029
+1    149     14459699863898 24-MAR-24 123     A 1       1       NO         HRP-19-PEPLDR04029
+                                  108     A 1       1       NO         HRP-19-PEPLDR04029
+1    150     14459699870855 24-MAR-24 123     A 1       1       NO         HRP-19-PEPLDR04029
+                                  107     A 1       1       NO         HRP-19-PEPLDR04029
+1    151     14459699875635 24-MAR-24 123     A 1       1       NO         HRP-19-PEPLDR04029
+                                  107     A 1       1       NO         HRP-19-PEPLDR04029
+1    152     14459699886366 24-MAR-24 123     A 1       1       NO         HRP-19-PEPLDR04029
+                                  107     A 1       1       NO         HRP-19-PEPLDR04029
+1    153     14459699892372 24-MAR-24 123     A 1       1       NO         HRP-19-PEPLDR04029
+                                  107     A 1       1       NO         HRP-19-PEPLDR04029
+1    154     14459699907585 24-MAR-24 123     A 1       1       NO         HRP-19-PEPLDR04029
+                                  107     A 1       1       NO         HRP-19-PEPLDR04029
+1    155     14459699915956 24-MAR-24 123     A 1       1       NO         HRP-19-PEPLDR04029
+                                  107     A 1       1       NO         HRP-19-PEPLDR04029
+1    156     14459700201477 24-MAR-24 120     A 1       1       NO         HRP-19-PEPLDR04029
+                                  105     A 1       1       NO         HRP-19-PEPLDR04029
+1    157     14459700222665 24-MAR-24 120     A 1       1       NO         HRP-19-PEPLDR04029
+                                  105     A 1       1       NO         HRP-19-PEPLDR04029
+1    158     14459700232395 24-MAR-24 120     A 1       1       NO         HRP-19-PEPLDR04029
+                                  105     A 1       1       NO         HRP-19-PEPLDR04029
+1    159     14459700237651 24-MAR-24 120     A 1       1       NO         HRP-19-PEPLDR04029
+                                  105     A 1       1       NO         HRP-19-PEPLDR04029
+1    160     14459700256756 24-MAR-24 120     A 1       1       NO         HRP-19-PEPLDR04029
+                                  105     A 1       1       NO         HRP-19-PEPLDR04029
+1    161     14459700264499 24-MAR-24 120     A 1       1       NO         HRP-19-PEPLDR04029
+                                  105     A 1       1       NO         HRP-19-PEPLDR04029
+1    162     14459700282523 25-MAR-24 120     A 1       1       NO         HRP-19-PEPLDR04029
+                                  105     A 1       1       NO         HRP-19-PEPLDR04029
+1    163     14459700368100 25-MAR-24 120     A 1       1       NO         HRP-19-PEPLDR04029
+                                  105     A 1       1       NO         HRP-19-PEPLDR04029
+1    164     14459700385189 25-MAR-24 120     A 1       1       NO         HRP-19-PEPLDR04029
+                                  105     A 1       1       NO         HRP-19-PEPLDR04029
+1    165     14459700396847 25-MAR-24 120     A 1       1       NO         HRP-19-PEPLDR04029
+                                  105     A 1       1       NO         HRP-19-PEPLDR04029
+1    166     14459700415969 25-MAR-24 120     A 1       1       NO         HRP-19-PEPLDR04029
+                                  105     A 1       1       NO         HRP-19-PEPLDR04029
+1    167     14459700431121 25-MAR-24 121     A 1       1       NO         HRP-19-PEPLDR04029
+                                  105     A 1       1       NO         HRP-19-PEPLDR04029
+1    168     14459700439623 25-MAR-24 121     A 1       1       NO         HRP-19-PEPLDR04029
+                                  106     A 1       1       NO         HRP-19-PEPLDR04029
+1    169     14459700444822 25-MAR-24 121     A 1       1       NO         HRP-19-PEPLDR04029
+                                  106     A 1       1       NO         HRP-19-PEPLDR04029
+1    170     14459700452515 25-MAR-24 121     A 1       1       NO         HRP-19-PEPLDR04029
+                                  106     A 1       1       NO         HRP-19-PEPLDR04029
+1    171     14459700459540 25-MAR-24 121     A 1       1       NO         HRP-19-PEPLDR04029
+                                  106     A 1       1       NO         HRP-19-PEPLDR04029
+1    172     14459700466677 25-MAR-24 121     A 1       1       NO         HRP-19-PEPLDR04029
+                                  106     A 1       1       NO         HRP-19-PEPLDR04029
+1    173     14459700471999 25-MAR-24 121     A 1       1       NO         HRP-19-PEPLDR04029
+                                  106     A 1       1       NO         HRP-19-PEPLDR04029
+1    174     14459700520466 25-MAR-24 121     A 1       1       NO         HRP-19-PEPLDR04029
+                                  106     A 1       1       NO         HRP-19-PEPLDR04029
+1    175     14459700564812 25-MAR-24 121     A 1       1       NO         HRP-19-PEPLDR04029
+                                  106     A 1       1       NO         HRP-19-PEPLDR04029
+1    176     14459700572114 25-MAR-24 121     A 1       1       NO         HRP-19-PEPLDR04029
+                                  106     A 1       1       NO         HRP-19-PEPLDR04029
+1    177     14459700580981 25-MAR-24 122     A 1       1       NO         HRP-19-PEPLDR04029
+                                  106     A 1       1       NO         HRP-19-PEPLDR04029
+1    178     14459700591827 25-MAR-24 122     A 1       1       NO         HRP-19-PEPLDR04029
+                                  103     A 1       1       NO         HRP-19-PEPLDR04029
+1    179     14459700602828 25-MAR-24 122     A 1       1       NO         HRP-19-PEPLDR04029
+                                  103     A 1       1       NO         HRP-19-PEPLDR04029
+1    180     14459700621385 25-MAR-24 122     A 1       1       NO         HRP-19-PEPLDR04029
+                                  103     A 1       1       NO         HRP-19-PEPLDR04029
+1    181     14459700639236 25-MAR-24 122     A 1       1       NO         HRP-19-PEPLDR04029
+                                  103     A 1       1       NO         HRP-19-PEPLDR04029
+1    182     14459700646700 25-MAR-24 122     A 1       1       NO         HRP-19-PEPLDR04029
+                                  103     A 1       1       NO         HRP-19-PEPLDR04029
+1    183     14459700646790 25-MAR-24 129     A 1       1       NO         HRP-19-PEPLDR04029
+                                  122     A 1       1       NO         HRP-19-PEPLDR04029
+1    184     14459700708999 25-MAR-24 128     A 1       1       NO         HRP-19-PEPLDR04029
+                                  119     A 1       1       NO         HRP-19-PEPLDR04029
+1    185     14459700712261 25-MAR-24 128     A 1       1       NO         HRP-19-PEPLDR04029
+                                  119     A 1       1       NO         HRP-19-PEPLDR04029
+1    186     14459700712306 25-MAR-24 144     A 1       1       NO         HRP-19-PEPLDR04029
+                                  128     A 1       1       NO         HRP-19-PEPLDR04029
+1    187     14459700732093 25-MAR-24 144     A 1       1       NO         HRP-19-PEPLDR04029
+                                  131     A 1       1       NO         HRP-19-PEPLDR04029
+1    188     14459700752033 25-MAR-24 144     A 1       1       NO         HRP-19-PEPLDR04029
+                                  131     A 1       1       NO         HRP-19-PEPLDR04029
+1    189     14459700770453 25-MAR-24 143     A 1       1       NO         HRP-19-PEPLDR04029
+                                  131     A 1       1       NO         HRP-19-PEPLDR04029
+1    190     14459700787166 25-MAR-24 143     A 1       1       NO         HRP-19-PEPLDR04029
+                                  130     A 1       1       NO         HRP-19-PEPLDR04029
+1    191     14459700803083 25-MAR-24 143     A 1       1       NO         HRP-19-PEPLDR04029
+                                  130     A 1       1       NO         HRP-19-PEPLDR04029
+1    192     14459700819532 25-MAR-24 143     A 1       1       NO         HRP-19-PEPLDR04029
+                                  130     A 1       1       NO         HRP-19-PEPLDR04029
+1    193     14459700833005 25-MAR-24 142     A 1       1       NO         HRP-19-PEPLDR04029
+                                  127     A 1       1       NO         HRP-19-PEPLDR04029
+1    194     14459700833118 25-MAR-24 153     A 1       1       NO         HRP-19-PEPLDR04029
+                                  142     A 1       1       NO         HRP-19-PEPLDR04029
+1    195     14459700849451 25-MAR-24 153     A 1       1       NO         HRP-19-PEPLDR04029
+                                  142     A 1       1       NO         HRP-19-PEPLDR04029
+1    196     14459700864651 25-MAR-24 153     A 1       1       NO         HRP-19-PEPLDR04029
+                                  142     A 1       1       NO         HRP-19-PEPLDR04029
+1    197     14459700882790 25-MAR-24 149     A 1       1       NO         HRP-19-PEPLDR04029
+                                  145     A 1       1       NO         HRP-19-PEPLDR04029
+1    198     14459700898454 25-MAR-24 149     A 1       1       NO         HRP-19-PEPLDR04029
+                                  145     A 1       1       NO         HRP-19-PEPLDR04029
+1    199     14459700916630 25-MAR-24 151     A 1       1       NO         HRP-19-PEPLDR04029
+                                  145     A 1       1       NO         HRP-19-PEPLDR04029
+1    200     14459700953763 25-MAR-24 152     A 1       1       NO         HRP-19-PEPLDR04029
+                                  141     A 1       1       NO         HRP-19-PEPLDR04029
+1    201     14459700968962 25-MAR-24 152     A 1       1       NO         HRP-19-PEPLDR04029
+                                  141     A 1       1       NO         HRP-19-PEPLDR04029
+1    202     14459700982989 25-MAR-24 152     A 1       1       NO         HRP-19-PEPLDR04029
+                                  141     A 1       1       NO         HRP-19-PEPLDR04029
+1    203     14459700990425 25-MAR-24 150     A 1       1       NO         HRP-19-PEPLDR04029
+                                  141     A 1       1       NO         HRP-19-PEPLDR04029
+1    204     14459700990464 25-MAR-24 158     A 1       1       NO         HRP-19-PEPLDR04029
+                                  150     A 1       1       NO         HRP-19-PEPLDR04029
+1    205     14459700994028 25-MAR-24 158     A 1       1       NO         HRP-19-PEPLDR04029
+                                  150     A 1       1       NO         HRP-19-PEPLDR04029
+1    206     14459700994112 25-MAR-24 167     A 1       1       NO         HRP-19-PEPLDR04029
+                                  158     A 1       1       NO         HRP-19-PEPLDR04029
+1    207     14459701003968 25-MAR-24 167     A 1       1       NO         HRP-19-PEPLDR04029
+                                  160     A 1       1       NO         HRP-19-PEPLDR04029
+1    208     14459701013823 25-MAR-24 167     A 1       1       NO         HRP-19-PEPLDR04029
+                                  160     A 1       1       NO         HRP-19-PEPLDR04029
+1    209     14459701023185 25-MAR-24 167     A 1       1       NO         HRP-19-PEPLDR04029
+                                  160     A 1       1       NO         HRP-19-PEPLDR04029
+1    210     14459701034441 25-MAR-24 169     A 1       1       NO         HRP-19-PEPLDR04029
+                                  161     A 1       1       NO         HRP-19-PEPLDR04029
+1    211     14459701041119 25-MAR-24 169     A 1       1       NO         HRP-19-PEPLDR04029
+                                  161     A 1       1       NO         HRP-19-PEPLDR04029
+1    212     14459701332898 25-MAR-24 165     A 1       1       NO         HRP-19-PEPLDR04029
+                                  159     A 1       1       NO         HRP-19-PEPLDR04029
+1    213     14459701352448 25-MAR-24 165     A 1       1       NO         HRP-19-PEPLDR04029
+                                  159     A 1       1       NO         HRP-19-PEPLDR04029
+1    214     14459701361130 25-MAR-24 165     A 1       1       NO         HRP-19-PEPLDR04029
+                                  159     A 1       1       NO         HRP-19-PEPLDR04029
+1    215     14459701361185 25-MAR-24 165     A 1       1       NO         HRP-19-PEPLDR04029
+                                  157     A 1       1       NO         HRP-19-PEPLDR04029
+1    216     14459701361272 25-MAR-24 178     A 1       1       NO         HRP-19-PEPLDR04029
+                                  168     A 1       1       NO         HRP-19-PEPLDR04029
+1    217     14459701377533 25-MAR-24 178     A 1       1       NO         HRP-19-PEPLDR04029
+                                  168     A 1       1       NO         HRP-19-PEPLDR04029
+1    218     14459701385194 25-MAR-24 178     A 1       1       NO         HRP-19-PEPLDR04029
+                                  168     A 1       1       NO         HRP-19-PEPLDR04029
+1    219     14459701398938 26-MAR-24 178     A 1       1       NO         HRP-19-PEPLDR04029
+                                  168     A 1       1       NO         HRP-19-PEPLDR04029
+1    220     14459701488950 26-MAR-24 176     A 1       1       NO         HRP-19-PEPLDR04029
+                                  166     A 1       1       NO         HRP-19-PEPLDR04029
+1    221     14459701495388 26-MAR-24 176     A 1       1       NO         HRP-19-PEPLDR04029
+                                  166     A 1       1       NO         HRP-19-PEPLDR04029
+1    222     14459701502207 26-MAR-24 176     A 1       1       NO         HRP-19-PEPLDR04029
+                                  166     A 1       1       NO         HRP-19-PEPLDR04029
+1    223     14459701516996 26-MAR-24 176     A 1       1       NO         HRP-19-PEPLDR04029
+                                  166     A 1       1       NO         HRP-19-PEPLDR04029
+1    224     14459701531317 26-MAR-24 175     A 1       1       NO         HRP-19-PEPLDR04029
+                                  170     A 1       1       NO         HRP-19-PEPLDR04029
+1    225     14459701531321 26-MAR-24 175     A 1       1       NO         HRP-19-PEPLDR04029
+                                  170     A 1       1       NO         HRP-19-PEPLDR04029
+1    226     14459701531402 26-MAR-24 184     A 1       1       NO         HRP-19-PEPLDR04029
+                                  175     A 1       1       NO         HRP-19-PEPLDR04029
+1    227     14459701538324 26-MAR-24 184     A 1       1       NO         HRP-19-PEPLDR04029
+                                  175     A 1       1       NO         HRP-19-PEPLDR04029
+1    228     14459701545166 26-MAR-24 184     A 1       1       NO         HRP-19-PEPLDR04029
+                                  174     A 1       1       NO         HRP-19-PEPLDR04029
+1    229     14459701550987 26-MAR-24 184     A 1       1       NO         HRP-19-PEPLDR04029
+                                  174     A 1       1       NO         HRP-19-PEPLDR04029
+1    230     14459701559425 26-MAR-24 185     A 1       1       NO         HRP-19-PEPLDR04029
+                                  174     A 1       1       NO         HRP-19-PEPLDR04029
+1    231     14459701566363 26-MAR-24 185     A 1       1       NO         HRP-19-PEPLDR04029
+                                  174     A 1       1       NO         HRP-19-PEPLDR04029
+1    232     14459701573928 26-MAR-24 185     A 1       1       NO         HRP-19-PEPLDR04029
+                                  177     A 1       1       NO         HRP-19-PEPLDR04029
+1    233     14459701599477 26-MAR-24 185     A 1       1       NO         HRP-19-PEPLDR04029
+                                  177     A 1       1       NO         HRP-19-PEPLDR04029
+1    234     14459701607904 26-MAR-24 183     A 1       1       NO         HRP-19-PEPLDR04029
+                                  177     A 1       1       NO         HRP-19-PEPLDR04029
+1    235     14459701607986 26-MAR-24 192     A 1       1       NO         HRP-19-PEPLDR04029
+                                  183     A 1       1       NO         HRP-19-PEPLDR04029
+1    236     14459701614540 26-MAR-24 192     A 1       1       NO         HRP-19-PEPLDR04029
+                                  183     A 1       1       NO         HRP-19-PEPLDR04029
+1    237     14459701622183 26-MAR-24 192     A 1       1       NO         HRP-19-PEPLDR04029
+                                  183     A 1       1       NO         HRP-19-PEPLDR04029
+1    238     14459701634862 26-MAR-24 192     A 1       1       NO         HRP-19-PEPLDR04029
+                                  186     A 1       1       NO         HRP-19-PEPLDR04029
+1    239     14459701650763 26-MAR-24 191     A 1       1       NO         HRP-19-PEPLDR04029
+                                  186     A 1       1       NO         HRP-19-PEPLDR04029
+1    240     14459701665013 26-MAR-24 191     A 1       1       NO         HRP-19-PEPLDR04029
+                                  186     A 1       1       NO         HRP-19-PEPLDR04029
+1    241     14459701682385 26-MAR-24 191     A 1       1       NO         HRP-19-PEPLDR04029
+                                  182     A 1       1       NO         HRP-19-PEPLDR04029
+1    242     14459701737474 26-MAR-24 191     A 1       1       NO         HRP-19-PEPLDR04029
+                                  182     A 1       1       NO         HRP-19-PEPLDR04029
+1    243     14459701755469 26-MAR-24 193     A 1       1       NO         HRP-19-PEPLDR04029
+                                  187     A 1       1       NO         HRP-19-PEPLDR04029
+1    244     14459701755553 26-MAR-24 193     A 1       1       NO         HRP-19-PEPLDR04029
+1    245     14459701808970 26-MAR-24 193     A 1       1       NO         HRP-19-PEPLDR04029
+1    246     14459701875584 26-MAR-24 193     A 1       1       NO         HRP-19-PEPLDR04029
+1    247     14459701923797 26-MAR-24 195     A 1       1       NO         HRP-19-PEPLDR04029
+1    248     14459701979211 26-MAR-24 195     A 1       1       NO         HRP-19-PEPLDR04029
+1    249     14459702060409 26-MAR-24 196     A 1       1       NO         HRP-19-PEPLDR04029
+1    250     14459702132864 26-MAR-24 196     A 1       1       NO         HRP-19-PEPLDR04029
+1    251     14459702204608 26-MAR-24 194     A 1       1       NO         HRP-19-PEPLDR04029
+1    252     14459702279994 26-MAR-24 194     A 1       1       NO         HRP-19-PEPLDR04029
+1    253     14459702295392 26-MAR-24 194     A 1       1       NO         HRP-19-PEPLDR04029
+
+List of Control File Backups
+============================
+
+CF Ckp SCN Ckp Time  BS Key  S #Pieces #Copies Compressed Tag
+---------- --------- ------- - ------- ------- ---------- ---
+14459702297475 26-MAR-24 198     A 1       1       NO         HRP-19-PEPLDR04029
+14459702297157 26-MAR-24 197     A 1       1       NO         TAG20240326T144157
+14459701756287 26-MAR-24 190     A 1       1       NO         TAG20240326T104114
+14459701756181 26-MAR-24 189     A 1       1       NO         HRP-19-PEPLDR04029
+14459701755902 26-MAR-24 188     A 1       1       NO         TAG20240326T104037
+14459701608257 26-MAR-24 181     A 1       1       NO         TAG20240326T064053
+14459701608199 26-MAR-24 180     A 1       1       NO         HRP-19-PEPLDR04029
+14459701608058 26-MAR-24 179     A 1       1       NO         TAG20240326T064018
+14459701531727 26-MAR-24 173     A 1       1       NO         TAG20240326T024116
+14459701531667 26-MAR-24 172     A 1       1       NO         HRP-19-PEPLDR04029
+14459701531515 26-MAR-24 171     A 1       1       NO         TAG20240326T024032
+14459701361533 25-MAR-24 164     A 1       1       NO         TAG20240325T224100
+14459701361455 25-MAR-24 163     A 1       1       NO         HRP-19-PEPLDR04029
+14459701361365 25-MAR-24 162     A 1       1       NO         TAG20240325T224026
+14459700994437 25-MAR-24 156     A 1       1       NO         TAG20240325T184109
+14459700994322 25-MAR-24 155     A 1       1       NO         HRP-19-PEPLDR04029
+14459700994224 25-MAR-24 154     A 1       1       NO         TAG20240325T184014
+14459700993698 25-MAR-24 148     A 1       1       NO         TAG20240325T183810
+14459700992672 25-MAR-24 147     A 1       1       NO         HRP-19-PEPLDR04029
+14459700991203 25-MAR-24 146     A 1       1       NO         TAG20240325T182718
+14459700989333 25-MAR-24 140     A 1       1       NO         TAG20240325T181702
+14459700833726 25-MAR-24 134     A 1       1       NO         TAG20240325T140440
+14459700833472 25-MAR-24 133     A 1       1       NO         HRP-19-PEPLDR04029
+14459700833314 25-MAR-24 132     A 1       1       NO         TAG20240325T140343
+14459700720405 25-MAR-24 126     A 1       1       NO         TAG20240325T105326
+14459700718417 25-MAR-24 125     A 1       1       NO         HRP-19-PEPLDR04029
+14459700714660 25-MAR-24 124     A 1       1       NO         TAG20240325T104337
+14459700707774 25-MAR-24 117     A 1       1       NO         TAG20240325T103234
+14459700647891 25-MAR-24 111     A 1       1       NO         TAG20240325T100520
+14459700647732 25-MAR-24 110     A 1       1       NO         HRP-19-PEPLDR04029
+14459700647412 25-MAR-24 109     A 1       1       NO         TAG20240325T100431
+14459699759624 24-MAR-24 102     A 1       1       NO         TAG20240324T131100
+14459699758441 24-MAR-24 101     A 1       1       NO         HRP-19-PEPLDR04029
+14459699757727 24-MAR-24 100     A 1       1       NO         TAG20240324T130115
+14459699688637 24-MAR-24 93      A 1       1       NO         TAG20240324T072508
+14459699688607 24-MAR-24 92      A 1       1       NO         HRP-19-PEPLDR04029
+14459699687805 24-MAR-24 91      A 1       1       NO         TAG20240324T071954
+14459699623103 24-MAR-24 84      A 1       1       NO         TAG20240324T033437
+14459699622397 24-MAR-24 83      A 1       1       NO         HRP-19-PEPLDR04029
+14459699622258 24-MAR-24 82      A 1       1       NO         TAG20240324T032927
+14459699375479 24-MAR-24 73      A 1       1       NO         TAG20240324T001724
+14459699374758 24-MAR-24 72      A 1       1       NO         HRP-19-PEPLDR04029
+14459699373939 24-MAR-24 71      A 1       1       NO         TAG20240324T001630
+14459699363133 24-MAR-24 63      A 1       1       NO         TAG20240324T000210
+14380155146021 08-NOV-22 52      X 1       1       NO         TAG20221108T160259
+14376179726609 23-SEP-22 47      X 1       1       YES        TAG20220923T163949
+13930477318365 07-DEC-18 45      X 1       1       NO         TAG20181207T150338
+13930452301366 07-DEC-18 44      X 1       1       NO         TAG20181207T141728
+13930452234593 07-DEC-18 43      X 1       1       NO         TAG20181207T134149
+13929950074030 06-DEC-18 41      X 1       1       NO         TAG20181206T161828
+13928742284092 04-DEC-18 36      X 1       1       YES        FORSTANDBY
+13926356361104 30-NOV-18 34      X 1       1       NO         TAG20181130T232821
+List of SPFILE Backups
+======================
+
+Modification Time BS Key  S #Pieces #Copies Compressed Tag
+----------------- ------- - ------- ------- ---------- ---
+23-MAR-24         197     A 1       1       NO         TAG20240326T144157
+23-MAR-24         190     A 1       1       NO         TAG20240326T104114
+23-MAR-24         188     A 1       1       NO         TAG20240326T104037
+23-MAR-24         181     A 1       1       NO         TAG20240326T064053
+23-MAR-24         179     A 1       1       NO         TAG20240326T064018
+23-MAR-24         173     A 1       1       NO         TAG20240326T024116
+23-MAR-24         171     A 1       1       NO         TAG20240326T024032
+23-MAR-24         164     A 1       1       NO         TAG20240325T224100
+23-MAR-24         162     A 1       1       NO         TAG20240325T224026
+23-MAR-24         156     A 1       1       NO         TAG20240325T184109
+23-MAR-24         154     A 1       1       NO         TAG20240325T184014
+23-MAR-24         148     A 1       1       NO         TAG20240325T183810
+23-MAR-24         146     A 1       1       NO         TAG20240325T182718
+23-MAR-24         140     A 1       1       NO         TAG20240325T181702
+23-MAR-24         134     A 1       1       NO         TAG20240325T140440
+23-MAR-24         132     A 1       1       NO         TAG20240325T140343
+23-MAR-24         126     A 1       1       NO         TAG20240325T105326
+23-MAR-24         124     A 1       1       NO         TAG20240325T104337
+23-MAR-24         117     A 1       1       NO         TAG20240325T103234
+23-MAR-24         111     A 1       1       NO         TAG20240325T100520
+23-MAR-24         109     A 1       1       NO         TAG20240325T100431
+23-MAR-24         102     A 1       1       NO         TAG20240324T131100
+23-MAR-24         100     A 1       1       NO         TAG20240324T130115
+23-MAR-24         93      A 1       1       NO         TAG20240324T072508
+23-MAR-24         91      A 1       1       NO         TAG20240324T071954
+23-MAR-24         84      A 1       1       NO         TAG20240324T033437
+23-MAR-24         82      A 1       1       NO         TAG20240324T032927
+23-MAR-24         73      A 1       1       NO         TAG20240324T001724
+23-MAR-24         71      A 1       1       NO         TAG20240324T001630
+23-MAR-24         63      A 1       1       NO         TAG20240324T000210
+22-SEP-22         48      X 1       1       YES        TAG20220923T163949
+03-DEC-18         37      X 1       1       YES        FORSTANDBY
+01-OCT-14         12      A 1       1       YES        TAG20150415T200215
+
+Recovery Manager complete.

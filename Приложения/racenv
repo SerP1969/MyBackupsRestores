@@ -1,0 +1,269 @@
+#!/bin/bash      
+# This should be sourced into your current shell
+#
+#- Before making changes to this script, please coordinate
+#- with the Oracle SE.
+#- L. Rigdon  05/25/1999
+#############################################################
+# Set up User Environment
+#############################################################
+#head1 REVISION HISTORY
+# cdupre - 2009-02-23 - stripped copy of setenv by L. Rigdon
+#                       
+#cut
+#############################################################
+PA1=${1:-""}
+MFDAT=${MFDAT:-""}
+TNS_ADMIN=${TNS_ADMIN:=""}
+BATCH_SID=${BATCH_SID:=""}
+SHLIB_PATH=${SHLIB_PATH:=""}
+LIBPATH=${LIBPATH:=""}
+LD_LIBRARY_PATH=${LD_LIBRARY_PATH:=""}
+base_path=${base_path:=""}
+appl_ohome=""
+skip_oraenv=""
+tnsAdmin11i=""
+r=""
+n=""
+DB=""
+DBNAME=""
+opsys=`uname -s`
+echo $- | grep x
+if [ $? = 0 ]; then # Check set -x on or off
+   setting=-x       # It's on
+else
+   setting=+x       # It's Off
+fi
+# set +x              # Force it off for setenv
+
+echo "Setting up environment"
+
+######
+#  Clear old ORACLE_HOME settings from PATH, SHLIB_PATH, LIBPATH and LD_LIBRARY_PATH
+######
+# SDAMER 10/22/02 - Cleaned up processing to get rid of multiple ORACLE_HOME's
+#                  in the paths as well as duplicate, leading and trailing colons.
+#=============================================================================
+
+PATH=":${PATH}:"                                    # Add a colon to beginning and end to simplify match.
+if [ ${ORACLE_HOME:=0} != 0 ]; then
+   PATH=`echo $PATH | sed "s;:$ORACLE_HOME/bin:;:;g"`  # remove ALL occurances of OLD ORACLE_HOME
+fi
+PATH=`echo $PATH | sed "s;:[^:]*oracle/[^:]*bin[^:]*;;g"`  # remove ALL occurances of OLD ORACLE_HOME
+PATH=`echo $PATH | sed "s;:/home/orarac[^:]*/bin:;:;g"`  # remove ALL occurances of /home/orarac/bin
+PATH=`echo $PATH | sed "s;::*;:;g"`                 # remove duplicate : (colon's)
+PATH=`echo $PATH | sed "s;^:;;g"`                   # remove leading : (colon)
+PATH=`echo $PATH | sed "s;:$;;g"`                   # remove trailing : (colon)
+
+if [ "X${LD_LIBRARY_PATH:=""}" != "X" ]; then
+   LD_LIBRARY_PATH=":${LD_LIBRARY_PATH}:"                                     # Add a colon to beginning and end to simplify match.
+   if [ ${ORACLE_HOME:=0} != 0 ]; then
+      LD_LIBRARY_PATH=`echo $LD_LIBRARY_PATH | sed "s;:$ORACLE_HOME/lib:;:;g"`   # remove ALL occurances of OLD ORACLE_HOME
+      LD_LIBRARY_PATH=`echo $LD_LIBRARY_PATH | sed "s;:$ORACLE_HOME/lib32:;:;g"` # remove ALL occurances of OLD ORACLE_HOME
+      LD_LIBRARY_PATH=`echo $LD_LIBRARY_PATH | sed "s;:$ORACLE_HOME/lib64:;:;g"` # remove ALL occurances of OLD ORACLE_HOME
+   fi
+   LD_LIBRARY_PATH=`echo $LD_LIBRARY_PATH | sed "s;:[^:]*/oracle/[^:]*lib[^:]*:;:;g"`   # remove ALL occurances of OLD ORACLE_HOME
+   LD_LIBRARY_PATH=`echo $LD_LIBRARY_PATH | sed "s;::*;:;g"`                # remove duplicate : (colon's)
+   LD_LIBRARY_PATH=`echo $LD_LIBRARY_PATH | sed "s;^:;;g"`                  # remove leading : (colon)
+   LD_LIBRARY_PATH=`echo $LD_LIBRARY_PATH | sed "s;:$;;g"`                  # remove trailing : (colon)
+fi
+
+# Process the Environment settings file
+export id=0
+
+#-- setup crs_home
+if [ "x" != "x$CRS_HOME" ]; then 
+   export PATH=$CRS_HOME/bin:$PATH
+   export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$CRS_HOME/lib
+fi;   
+#-- setup agent_home
+if [ "x" != "x$AGENT_HOME" ]; then 
+   export PATH=$AGENT_HOME/bin:$PATH
+   export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$AGENT_HOME/lib
+fi;
+
+#
+#  Locate Unix user Oracle's Home
+#
+orahome=/home/$LOGNAME
+export PATH=$orahome/bin:$PATH
+#
+# If input is terminal based, display the selection menu
+tty -s
+tmode=$?
+#
+#   If TTY mode do the display
+#
+if [ $tmode -eq 0 -a "X" = "X$PA1" -a "X" = "X$BATCH_SID" ]
+then
+   b=`tput bold`
+   r=`tput rev`
+   n=`tput sgr0`
+   cat /etc/oratab | awk -F: '{if (substr($1,1,1)!="#") print $1}' | while read DB
+   do
+      let id=$id+1
+      comment=`cat /etc/oratab | grep -i "##${DB}:" | cut -f2 -d':'`
+      echo  "$b${id}) $n $DB $b$comment$n"
+   done
+   echo " "
+   echo $b"Select a Database"$n
+   read Selection
+   if [ -z "$Selection" ]
+   then
+      Selection=1
+      echo "Defaulting to " $Selection
+   fi
+   id=0
+   DBNAME=`(
+   cat /etc/oratab | awk -F: '{if (substr($1,1,1)!="#") print $1}' | while read DB
+   do
+      let id=$id+1
+      if [ $id = $Selection ]
+      then
+         DBNAME=$DB
+         echo $DB
+      fi
+   done
+   )`
+   unset id
+else
+   if [ -z "$BATCH_SID" ]; then
+      DBNAME=$PA1
+   else
+      DBNAME=$BATCH_SID
+   fi
+fi
+
+# Starting environment setup for $DBNAME
+#
+#################################
+# Basic Oracle Setup
+###########
+if grep -i ${DBNAME}: /etc/oratab >/dev/null
+then
+   export ORACLE_HOME=`grep -i ^${DBNAME}: /etc/oratab | awk -F: '{print $2}'`
+   
+   # SDAMER 8/15/01 - Allow ORACLE_HOME to be set different from the DB for non
+   #                  "oracle" UNIX id's where a {sid}OH entry exists in appltab.
+   #=============================================================================
+   if [ -f $orahome/bin/appltab ]; then
+      appl_ohome=`grep -i ^${DBNAME}80, $orahome/bin/appltab | awk -F, '{print $2}'`
+   fi
+   
+   unset TWO_TASK
+   unset ORA_NLS33
+   unixid=`whoami`
+   if [ "X$unixid" != "Xoracle" -a "X$appl_ohome" != "X" ]; then
+      export TWO_TASK=${DBNAME}
+      export ORACLE_HOME=$appl_ohome
+      skip_oraenv="Y"
+   fi
+   
+   export ORACLE_BASE=`echo $ORACLE_HOME | cut -d/ -f1-4`
+
+   if [ -z "$base_path" ]
+   then
+      export base_path=$PATH
+   fi
+
+   export PATH=$ORACLE_HOME/bin:$base_path
+
+   
+   # SDAMER 02/27/02: Check to see if TNS_ADMIN was previously set for an r11i environment.
+   # If so, unset it so it can be set correctly.
+   # ======================================================================================
+   tnsAdmin11i=`echo $TNS_ADMIN|grep -i r11i`
+   if [ "x" != "x$tnsAdmin11i" ];then unset TNS_ADMIN; fi;
+   
+   # Set TNS_ADMIN if it was not previously set.
+   # ======================================================================================
+   if [ "x" = "x$TNS_ADMIN" ]; then
+      if [ -f /var/opt/oracle/sqlnet.ora ];     then export TNS_ADMIN=/var/opt/oracle; fi;
+      if [ -f /var/opt/oracle/tns/sqlnet.ora ]; then export TNS_ADMIN=/var/opt/oracle/tns; fi;
+   fi
+   
+
+   export LD_LIBRARY_PATH=$ORACLE_HOME/lib:$LD_LIBRARY_PATH
+   export LIBPATH=$ORACLE_HOME/lib:/usr/lib:$LIBPATH
+   if [ "$opsys" = "AIX" -a -d $ORACLE_HOME/lib32 ]; then
+      export LIBPATH=$ORACLE_HOME/lib32:$LIBPATH
+   fi
+   
+   echo $DBNAME
+   export ORACLE_SID=`grep -i ^${DBNAME}: /etc/oratab | awk -F: '{print $1}'`
+   export ORACLE_BIN=$ORACLE_BASE/local/scripts
+   export ORACLE_ADMIN=$ORACLE_HOME/admin
+   export LINK_CNTRL=L_PTHREADS_D7
+   ORAENV_ASK=NO; export ORAENV_ASK
+   if [ -f $ORACLE_HOME/$ORACLE_SID.env ]; then
+      . $ORACLE_HOME/$ORACLE_SID.env
+   elif [ -f $ORACLE_HOME/ORACLE.env ]; then
+      . $ORACLE_HOME/ORACLE.env
+   else
+      export NLS_LANG=AMERICAN_AMERICA.WE8ISO8859P1
+      export NLS_DATE_FORMAT=DD-MON-RR
+      export NLS_NUMERIC_CHARACTERS=".,"
+      export ORA_NLS="$ORACLE_HOME/ocommon/nls/admin/data"
+      unset ORA_NLS33
+      export NLS_SORT="binary"
+   fi
+   
+   export MACHINE=`echo $ORACLE_HOME | cut -f 2 -d /`
+   PS1='$PWD $ORACLE_SID]>'  
+
+else
+   echo $r"Invalid Oracle SID specified $DB"$n
+fi
+
+if [ -z "$BATCH_SID" -a "$tmode" = 0 ]; then  # Only shift out the env if interactive
+   #############################################################################
+   #  Display Basic Setup
+   ################################################################
+   if [ -z "$BATCH_SID" -a -z "$PA1" ]
+   then
+      alias dir='ls -al'
+      echo "================================================"
+      date +"   %A %B %e, %Y  at %T %Z "
+      echo ""
+      echo $b"         Oracle Environment Setup"$n
+      echo ""
+      echo " USER ID            = "$b ${LOGIN:=$LOGNAME} $n
+      echo " "
+      echo " ORACLE SID         = "$b $ORACLE_SID $n
+      echo ""
+      echo " ORACLE HOME        = "$b $ORACLE_HOME $n
+      echo ""
+      echo " ORACLE BASE        = "$b $ORACLE_BASE $n
+      echo ""
+      echo " CRS HOME           = "$b $CRS_HOME $n
+      echo ""
+      echo " PATH               = "$b $PATH $n
+      echo ""
+      echo " LD_LIBRARY_PATH    = "$b $LD_LIBRARY_PATH $n
+      echo ""
+      if [ "X" != "X${APPL_TOP:=""}" ]; then
+         echo " APPL_TOP           = "$b $APPL_TOP $n
+         echo ""
+      fi
+   fi
+   while [ "X$PA1" != "X" ]
+   do
+      shift 
+      PA1=${1:+""}
+   done
+   
+   alias gohome='cd $ORACLE_HOME'
+   alias gobase='cd $ORACLE_BASE'
+   alias goadmin='cd $ORACLE_BASE/admin/$ORACLE_SID'
+   alias gobdump='cd $ORACLE_BASE/admin/$ORACLE_SID/bdump'
+   alias gocdump='cd $ORACLE_BASE/admin/$ORACLE_SID/cdump'
+   alias goudump='cd $ORACLE_BASE/admin/$ORACLE_SID/udump'
+   alias gocreate='cd $ORACLE_BASE/admin/$ORACLE_SID/create'
+   alias goinit='cd $ORACLE_BASE/admin/$ORACLE_SID/pfile'
+   alias goexp='cd /ora*/u*/export/$ORACLE_SID'
+   alias goarch='cd /ora*/u*/arch/$ORACLE_SID'
+   alias gobkup='cd /ora*/u*/backup/$ORACLE_SID'
+
+fi
+unset DBNAME
+set $setting                # Restore it's original setting

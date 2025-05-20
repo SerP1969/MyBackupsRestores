@@ -1,0 +1,54 @@
+###########################################################
+#  (c)Copyright SAP AG, Walldorf                          #
+# @(#) $Id: //inst/inst_scripts/lmts_004_REL/tpls/ora/INITSIDBASE.ORA#4 $
+###########################################################
+shared_pool_size = 18719881297
+open_cursors = 2000
+# processes = ABAP-Workprozesse * 2 + J2EE-Serverprozesse *       
+# <max-connections> + PARALLEL_MAX_SERVERS + 40 
+processes = 320
+# session = 2 * processes
+sessions = 640
+db_name = HRP
+db_block_size = 8192
+# retention time for RMAN backup information in control file
+control_file_record_keep_time = 30
+log_checkpoints_to_alert = true
+compatible = 19.0.0.0.0
+parallel_execution_message_size = 16384
+query_rewrite_enabled = false
+replication_dependency_tracking = false
+star_transformation_enabled = true
+log_archive_dest_1 = 'LOCATION=+ARCH/HRP/oraarch'
+log_archive_format = %t_%s_%r.dbf
+undo_tablespace = PSAPUNDO
+ENCRYPT_NEW_TABLESPACES = DDL
+pga_aggregate_target = 24959841730
+db_cache_size = 18719881297
+remote_login_passwordfile = exclusive
+recyclebin = off
+FILESYSTEMIO_OPTIONS = setall
+diagnostic_dest = /oracle/HRP/saptrace
+audit_file_dest = /oracle/HRP/saptrace/audit
+db_recovery_file_dest = +RECO
+db_recovery_file_dest_size = 30000M
+max_dump_file_size = 20000
+parallel_threads_per_cpu = 1
+_log_segment_dump_parameter = FALSE
+_log_segment_dump_patch = FALSE
+_mutex_wait_scheme = 1
+_mutex_wait_time = 10
+_optim_peek_user_binds = FALSE
+_optimizer_adaptive_cursor_sharing = FALSE
+_optimizer_batch_table_access_by_rowid = FALSE
+_optimizer_extended_cursor_sharing_rel = NONE
+_optimizer_reduce_groupby_key = FALSE
+_optimizer_use_feedback = FALSE
+_rowsets_enabled = FALSE
+_securefiles_concurrency_estimate = 50
+_suppress_identifiers_on_dupkey = TRUE
+_use_single_log_writer = TRUE
+_disable_directory_link_check = TRUE
+_kolfuseslf = TRUE
+#wallet_root = +DATA/HRP/orawallet
+control_files = (+DATA/HRP/cntrlHRP.dbf, +RECO/HRP/cntrlHRP.dbf, +ARCH/HRP/cntrlHRP.dbf)

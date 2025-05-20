@@ -1,0 +1,7 @@
+#Run:
+#/oracle/HRP/19/bin/rman cmdfile 'check_arch.rcv'|tee check_arch.log
+set DBID=2256538394
+connect target/
+ALLOCATE CHANNEL for maintenance type 'SBT_TAPE';
+SEND 'NB_ORA_SERV=filnbmst6.pi.pvt, NB_ORA_CLIENT=pepldr04029.pi.pvt';
+LIST BACKUP BY FILE;

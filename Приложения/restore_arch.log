@@ -1,0 +1,68 @@
+
+Recovery Manager: Release 19.0.0.0.0 - Production on Thu Mar 28 08:47:03 2024
+Version 19.19.0.0.0
+
+Copyright (c) 1982, 2019, Oracle and/or its affiliates.  All rights reserved.
+
+RMAN> #Run:
+2> #/oracle/HRP/19/bin/rman cmdfile 'restore_arch.rcv'|tee restore_arch.log
+3> #
+4> set DBID=2256538394
+5> #
+6> connect target/
+7> #
+8> run {
+9> ALLOCATE CHANNEL CH00 TYPE 'SBT_TAPE';
+10> ALLOCATE CHANNEL CH01 TYPE 'SBT_TAPE';
+11> ALLOCATE CHANNEL CH02 TYPE 'SBT_TAPE';
+12> ALLOCATE CHANNEL CH03 TYPE 'SBT_TAPE';
+13> ALLOCATE CHANNEL CH04 TYPE 'SBT_TAPE';
+14> SEND 'NB_ORA_SERV=filnbmst6.pi.pvt, NB_ORA_CLIENT=pepldr04029.pi.pvt';
+15> #set until time "to_date('16-MAR-2024 10:30:00','DD-MON-YYYY HH24:MI:SS')";
+16> restore archivelog until sequence 253 thread 1;
+17> RELEASE CHANNEL CH00;
+18> RELEASE CHANNEL CH01;
+19> RELEASE CHANNEL CH02;
+20> RELEASE CHANNEL CH03;
+21> RELEASE CHANNEL CH04;
+22> }
+23> 
+executing command: SET DBID
+
+connected to target database: HRP (DBID=2256538394, not open)
+
+using target database control file instead of recovery catalog
+allocated channel: CH00
+channel CH00: SID=17 device type=SBT_TAPE
+channel CH00: Veritas NetBackup for Oracle - Release 8.3.0.2 (2021071918)
+
+allocated channel: CH01
+channel CH01: SID=263 device type=SBT_TAPE
+channel CH01: Veritas NetBackup for Oracle - Release 8.3.0.2 (2021071918)
+
+allocated channel: CH02
+channel CH02: SID=515 device type=SBT_TAPE
+channel CH02: Veritas NetBackup for Oracle - Release 8.3.0.2 (2021071918)
+
+allocated channel: CH03
+channel CH03: SID=763 device type=SBT_TAPE
+channel CH03: Veritas NetBackup for Oracle - Release 8.3.0.2 (2021071918)
+
+allocated channel: CH04
+channel CH04: SID=6 device type=SBT_TAPE
+channel CH04: Veritas NetBackup for Oracle - Release 8.3.0.2 (2021071918)
+
+sent command to channel: CH00
+sent command to channel: CH01
+sent command to channel: CH02
+sent command to channel: CH03
+sent command to channel: CH04
+
+Starting restore at 28-MAR-24
+released channel: CH00
+released channel: CH01
+released channel: CH02
+released channel: CH03
+released channel: CH04
+
+Recovery Manager complete.

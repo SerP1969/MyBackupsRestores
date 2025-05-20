@@ -1,0 +1,59 @@
+https://eclipsys.ca/how-to-resolve-ora-19751-could-not-create-the-change-tracking-file-error-after-rman-restore-and-recovery/
+
+[oracle@pepldr04029CP.pi.pvt:HRP:/home/oracle]$sqlplus '/as sysdba'
+
+SQL*Plus: Release 19.0.0.0.0 - Production on Sat Mar 23 13:34:49 2024
+Version 19.19.0.0.0
+
+Copyright (c) 1982, 2022, Oracle.  All rights reserved.
+
+
+Connected to:
+Oracle Database 19c Enterprise Edition Release 19.0.0.0.0 - Production
+Version 19.19.0.0.0
+
+SQL> alter database disable BLOCK CHANGE TRACKING;
+
+Database altered.
+
+SQL> alter database open resetlogs;
+alter database open resetlogs
+*
+ERROR at line 1:
+ORA-01139: RESETLOGS option only valid after an incomplete database recovery
+
+
+SQL> alter database open;
+
+Database altered.
+
+SQL> select name, open_mode from v$database;
+
+NAME      OPEN_MODE
+--------- --------------------
+HRP       READ WRITE
+
+SQL> shutdown immediate;
+
+Database closed.
+Database dismounted.
+
+ORACLE instance shut down.
+SQL> startup;
+ORACLE instance started.
+
+Total System Global Area 2.2817E+10 bytes
+Fixed Size                  8937464 bytes
+Variable Size            1.0670E+10 bytes
+Database Buffers         1.2080E+10 bytes
+Redo Buffers               58171392 bytes
+Database mounted.
+Database opened.
+SQL>
+
+nboraadm -register_instance HRP -host pepldr04029.pi.pvt -oracle_home /oracle/HRP/19 -oracle_auth BackupAdmin
+  -oracle_home <oracle_home> [-tns_admin <tns_admin>]
+  {[-instance_group <name>] | [-os_user <name> [-os_domain <name>]] |
+  [-oracle_auth <user> [-oracle_TNS <tns>]] |
+  [-wallet_path <path> -wallet_TNS <tns> [-wallet_rman_TNS <tns>]]}
+  [-rman_catalog_user <name> [-rman_catalog_TNS <tns>]]] [-force]
